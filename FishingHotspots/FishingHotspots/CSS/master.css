@@ -1,0 +1,94 @@
+﻿body 
+{	
+    color:#555;	
+    font:normal 13px/22px Arial;	
+    background:url(../images/bgmain.png) #eee;
+}
+.navbar-inverse
+{
+    background-color:#eee; 
+    height: 80px;
+    padding-left:0px;
+}
+.navbar-inverse .navbar-nav > li > a 
+{
+    font-size: 11px;
+    font-family: din;
+    text-transform: uppercase;
+    margin-top:15px; 
+    color:#000000;
+}
+.navbar-inverse .navbar-nav > li > a:hover
+{
+    color:#808080;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus
+{
+    background-color: #72b70f;
+}
+.navButton
+{
+    margin-top:25px;
+    margin-left:30px;
+    height:30px;
+	-moz-box-shadow: 0px 0px 3px 0px #000000;
+	-webkit-box-shadow: 0px 0px 3px 0px #000000;
+	box-shadow: 0px 0px 3px 0px #000000;
+	background-color:#b0aaaa;
+	border:2px solid #000000;
+	display:inline-block;
+	cursor:pointer;
+	color:#fff2ff;
+	font-family:Arial;
+	font-size:12px;
+	padding:3px 20px;
+	text-decoration:none;
+	text-shadow:1px 0px 6px #6fcc31;
+}
+.navButton:hover {
+	background-color:#605858;
+}
+.navButton:active 
+{
+	position:relative;
+	top:1px;
+}
+.modal-content
+{
+    padding: 20px;
+}
+.footer
+{
+    background:url(../images/bg.jpg) #222; 
+    padding: 20px 0; 
+    color: #999;
+} 
+.footer h4
+{
+    color: #fff;
+    border-bottom: 2px solid #131313;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.footer ul
+{
+    list-style: none;
+    padding: 0; 
+}
+.footer a:hover
+{
+    color: #fff;
+}
+.footer p.copyright
+{
+    margin: 30px 0 0 0;
+}
+.btn-success
+{ 
+    background: #72b70f;
+    border:1px solid #72b70f;
+    padding:6px 20px; 
+    font-size:16px; 
+    width: 100%; 
+}
+
