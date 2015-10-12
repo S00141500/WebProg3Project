@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,7 +39,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -57,6 +68,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\FishingHotspotsDB.mdf" />
+    <Content Include="App_Data\FishingHotspotsDB_log.ldf">
+      <DependentUpon>FishingHotspotsDB.mdf</DependentUpon>
+    </Content>
     <Content Include="assets\bootstrap\css\bootstrap.css" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\bootstrap\js\bootstrap.js" />
@@ -74,6 +89,16 @@
     <Content Include="assets\slitslider\js\jquery.slitslider.js" />
     <Content Include="assets\slitslider\js\modernizr.custom.79639.js" />
     <Content Include="assets\style.css" />
+    <Content Include="FishingHotspotsEntities\ModelFisingHotspots.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelFisingHotspots.edmx</DependentUpon>
+      <LastGenOutput>ModelFisingHotspots.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="FishingHotspotsEntities\ModelFisingHotspots.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelFisingHotspots.edmx</DependentUpon>
+      <LastGenOutput>ModelFisingHotspots.cs</LastGenOutput>
+    </Content>
     <Content Include="images\about.jpg" />
     <Content Include="images\advertisements.jpg" />
     <Content Include="images\agents\1.jpg" />
@@ -108,6 +133,54 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FishingHotspotsEntities\FishCaughtTbl.cs">
+      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FishingHotspotsEntities\FishSpeciesTbl.cs">
+      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FishingHotspotsEntities\FishTypeTbl.cs">
+      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FishingHotspotsEntities\LakesTbl.cs">
+      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FishingHotspotsEntities\ModelFisingHotspots.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelFisingHotspots.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FishingHotspotsEntities\ModelFisingHotspots.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FishingHotspotsEntities\ModelFisingHotspots.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelFisingHotspots.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="FishingHotspotsEntities\NewsTbl.cs">
+      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FishingHotspotsEntities\RatingsTbl.cs">
+      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FishingHotspotsEntities\RegionsTbl.cs">
+      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FishingHotspotsEntities\ReviewsTbl.cs">
+      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FishingHotspotsEntities\RiversTbl.cs">
+      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FishingHotspotsEntities\UserRolesTbl.cs">
+      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FishingHotspotsEntities\UsersTbl.cs">
+      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+    </Compile>
     <Compile Include="FS.Master.cs">
       <DependentUpon>FS.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -133,12 +206,24 @@
     <Content Include="assets\fonts\din.ttf" />
     <Content Include="assets\fonts\din.woff" />
     <Content Include="assets\owl-carousel\.DS_Store" />
+    <EntityDeploy Include="FishingHotspotsEntities\ModelFisingHotspots.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelFisingHotspots.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="FishingHotspotsEntities\ModelFisingHotspots.edmx.diagram">
+      <DependentUpon>ModelFisingHotspots.edmx</DependentUpon>
+    </Content>
+    <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
