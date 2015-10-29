@@ -9,7 +9,7 @@
     </asp:ContentPlaceHolder>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="CSS/master.css" />
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.js"></script>
 
 </head>
@@ -47,6 +47,41 @@
     </div>
 
     <form id="form1" runat="server">
+        <div id="loginpop" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="row">
+                    <div class="col-sm-6 login">
+                        <h4>Login</h4>
+                        
+                            <div class="form-group">
+                                <asp:RequiredFieldValidator ID="rfvUserName" runat="server" ErrorMessage="RequiredFieldValidator" Text="*Please enter username or email address" CssClass="alert-danger" ControlToValidate="txtUserName" Display="Dynamic"></asp:RequiredFieldValidator>
+                               <asp:TextBox ID="txtUserName" runat="server" class="form-control" placeholder="Username"></asp:TextBox>
+                            </div>
+                            <div class="form-group">
+                                <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ErrorMessage="RequiredFieldValidator" Text="*Please enter password" CssClass="alert-danger" ControlToValidate="txtPassword" Display="Dynamic"></asp:RequiredFieldValidator>
+                                <asp:TextBox ID="txtPassword" runat="server" class="form-control" placeholder="Password"></asp:TextBox>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <asp:CheckBox ID="checKRemember" runat="server" />
+                                    Remember me
+                                </label>
+                            </div>
+
+                        <asp:Button ID="btnSignIn" runat="server" Text="Sign In" class="btn btn-success" OnClick="btnSignIn_Click"/>
+                       
+                    </div>
+                    <div class="col-sm-6">
+                        <h4>New User Sign Up</h4>
+                        <p>Join today and rate reviews and wirite your own.</p>
+                        <asp:Button ID="btnJoin" runat="server" Text="Join Now" class="navButton" OnClick="btnJoin_Click" CausesValidation="false" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
@@ -98,39 +133,6 @@
 
 
     <!-- Modal -->
-    <div id="loginpop" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="row">
-                    <div class="col-sm-6 login">
-                        <h4>Login</h4>
-                        <form class="" role="form">
-                            <div class="form-group">
-                                <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter Username or email" />
-                            </div>
-                            <div class="form-group">
-                                <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" />
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" />
-                                    Remember me
-                                </label>
-                            </div>
-                            <button type="submit" class="btn btn-success">Sign in</button>
-                        </form>
-                    </div>
-                    <div class="col-sm-6">
-                        <h4>New User Sign Up</h4>
-                        <p>Join today and rate reviews and wirite your own.</p>
-                        <button type="submit" class="navButton">Join Now</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
+    
 </body>
 </html>

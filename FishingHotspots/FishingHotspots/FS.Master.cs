@@ -13,5 +13,15 @@ namespace FishingHotspots
         {
 
         }
+
+        protected void btnSignIn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnJoin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Register.aspx");
+        }
     }
 }
