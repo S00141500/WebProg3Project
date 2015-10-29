@@ -48,6 +48,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PasswordHashTool, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PasswordHashTool.1.0.0\lib\PasswordHashTool.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -68,6 +72,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin_AddNews.aspx" />
+    <Content Include="Admin_Update_Delete.aspx" />
     <Content Include="App_Data\FishingHotspotsDB.mdf" />
     <Content Include="App_Data\FishingHotspotsDB_log.ldf">
       <DependentUpon>FishingHotspotsDB.mdf</DependentUpon>
@@ -89,6 +95,7 @@
     <Content Include="assets\slitslider\js\jquery.slitslider.js" />
     <Content Include="assets\slitslider\js\modernizr.custom.79639.js" />
     <Content Include="assets\style.css" />
+    <Content Include="CSS\PageForms.css" />
     <Content Include="FishingHotspotsEntities\ModelFisingHotspots.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelFisingHotspots.edmx</DependentUpon>
@@ -133,6 +140,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin_AddNews.aspx.cs">
+      <DependentUpon>Admin_AddNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_AddNews.aspx.designer.cs">
+      <DependentUpon>Admin_AddNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_Update_Delete.aspx.cs">
+      <DependentUpon>Admin_Update_Delete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_Update_Delete.aspx.designer.cs">
+      <DependentUpon>Admin_Update_Delete.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FishingHotspotsEntities\FishCaughtTbl.cs">
       <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
     </Compile>

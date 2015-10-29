@@ -37,7 +37,8 @@
                         <li><a href="Reviews.aspx">Reviews</a></li>
                         <li><a href="Write a review">Write a Review</a></li>
                         <li><a href="News.aspx">News</a></li>
-                        <li><button id="btnLogin" class="navButton" data-toggle="modal" data-target="#loginpop">Login</button></li>      
+                        <li>
+                            <button id="btnLogin" class="navButton" data-toggle="modal" data-target="#loginpop">Login</button></li>
                     </ul>
                 </div>
                 <!-- #Nav Ends -->
@@ -47,11 +48,10 @@
     </div>
 
     <form id="form1" runat="server">
-        <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
-        </div>
     </form>
+
     <div class="footer">
         <div class="container">
             <div class="row">
@@ -80,9 +80,9 @@
                 <div class="col-lg-4 col-sm-4">
                     <h4>Contact us</h4>
                     <p>
-                        <b>Fishing Hotspots Ltd.</b><br/>
-                        <span class="glyphicon glyphicon-map-marker"></span> Sligo Institute of Technology, Ash Lane, Sligo
-                        <br/>
+                        <b>Fishing Hotspots Ltd.</b><br />
+                        <span class="glyphicon glyphicon-map-marker"></span>Sligo Institute of Technology, Ash Lane, Sligo
+                        <br />
                         <span class="glyphicon glyphicon-envelope"></span>hello@fishinghotspots.com<br>
                         <span class="glyphicon glyphicon-earphone"></span>(123) 456-7890
                     </p>

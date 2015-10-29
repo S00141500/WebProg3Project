@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FishingHotspotsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FishingHotspotsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="FishCaughtTbl">
           <Key>
             <PropertyRef Name="Id" />
@@ -90,10 +90,10 @@
         <EntityType Name="UserRolesTbl">
           <Key>
             <PropertyRef Name="UserId" />
-            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="RoleName" />
           </Key>
           <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="RoleName" Type="char" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="UsersTbl">
           <Key>
@@ -312,8 +312,7 @@
             <End Role="UserRolesTbl" EntitySet="UserRolesTbl" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FishingHotspotsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -421,11 +420,11 @@
         <EntityType Name="UserRolesTbl">
           <Key>
             <PropertyRef Name="UserId" />
-            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="RoleName" />
           </Key>
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="RoleId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="UsersTbl" Relationship="Self.FK_UserRolesTbl_UsersTbl" FromRole="UserRolesTbl" ToRole="UsersTbl" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
         </EntityType>
         <EntityType Name="UsersTbl">
           <Key>
@@ -748,8 +747,8 @@
           <EntitySetMapping Name="UserRolesTbl">
             <EntityTypeMapping TypeName="FishingHotspotsDBModel.UserRolesTbl">
               <MappingFragment StoreEntitySet="UserRolesTbl">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

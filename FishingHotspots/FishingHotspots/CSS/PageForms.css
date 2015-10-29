@@ -1,0 +1,39 @@
+﻿body {
+}
+
+
+
+.formStyle {
+    padding: 30px 10px;
+    background: #fff;
+}
+
+.pageHeader {
+    color: #fff;
+    text-shadow: 1px 1px 1px #212020, 2px 3px 2px #212020, 2px 2px 2px #212020;
+}
+
+.inside-banner {
+    width: 100%;
+    background-image: url('../images/bginside.jpg');
+}
+
+    .inside-banner .container {
+        padding: 20px 0;
+        text-align: center;
+        width: 100%;
+    }
+
+.btnSaveNews {
+    padding-top: 40px;
+}
+
+.h3-admin {
+    background-image: url("../images/bginside.jpg");
+    color: #fff;
+}
+
+#btnDeleteItem {
+    float: left;
+    margin-top: 35px;
+}
