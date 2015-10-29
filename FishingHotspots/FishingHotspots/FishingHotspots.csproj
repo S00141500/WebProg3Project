@@ -82,6 +82,12 @@
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\bootstrap\js\bootstrap.js" />
     <Content Include="assets\fonts\din.svg" />
+    <Content Include="assets\slitslider\css\custom.css" />
+    <Content Include="assets\slitslider\css\style.css" />
+    <Content Include="assets\slitslider\js\jquery.ba-cond.min.js" />
+    <Content Include="assets\slitslider\js\jquery.slitslider.js" />
+    <Content Include="assets\slitslider\js\modernizr.custom.79639.js" />
+    <Content Include="CSS\Index.css" />
     <Content Include="CSS\master.css" />
     <Content Include="assets\owl-carousel\AjaxLoader.gif" />
     <Content Include="assets\owl-carousel\grabbing.png" />
@@ -89,18 +95,19 @@
     <Content Include="assets\owl-carousel\owl.carousel.js" />
     <Content Include="assets\owl-carousel\owl.theme.css" />
     <Content Include="assets\script.js" />
-    <Content Include="assets\slitslider\css\custom.css" />
-    <Content Include="assets\slitslider\css\style.css" />
-    <Content Include="assets\slitslider\js\jquery.ba-cond.min.js" />
-    <Content Include="assets\slitslider\js\jquery.slitslider.js" />
-    <Content Include="assets\slitslider\js\modernizr.custom.79639.js" />
     <Content Include="assets\style.css" />
+<<<<<<< HEAD
     <Content Include="CSS\PageForms.css" />
+=======
+    <Content Include="CSS\Register.css" />
+    <Content Include="FishingHotspotsEntities.sql" />
+>>>>>>> c7c7511512985ce2406e196e19b8a1451edc196c
     <Content Include="FishingHotspotsEntities\ModelFisingHotspots.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelFisingHotspots.edmx</DependentUpon>
       <LastGenOutput>ModelFisingHotspots.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="FishingHotspotsEntities\ModelFisingHotspots.edmx.sql" />
     <Content Include="FishingHotspotsEntities\ModelFisingHotspots.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelFisingHotspots.edmx</DependentUpon>
@@ -137,6 +144,7 @@
     <Content Include="images\slider\5.jpg" />
     <Content Include="images\twitter.png" />
     <Content Include="Index.aspx" />
+    <Content Include="Register.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +225,13 @@
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="FS.Master" />
