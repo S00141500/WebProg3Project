@@ -13,11 +13,5 @@ namespace FishingHotspots
         {
 
         }
-
-        protected void btnFindReviews_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

@@ -23,7 +23,7 @@ h6 span{margin-right: 5px; font-size: 12px;}
 p{margin-bottom: 30px;}
 a{color:#72b70f; text-decoration:none;outline: none;}
 a:hover{color:#333;}
-
+.spacer{margin-top: 40px;margin-bottom:40px;}
 .center{text-align: center;}
 .fullwidth{width: 100%;}
 select,input{outline: 0; margin-bottom: 20px;}
