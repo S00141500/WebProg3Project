@@ -18,7 +18,7 @@
 
             //var oFevent;
             //var oFReader = new FileReader();
-            //var img = $("#uploadImage1");
+            ////var img = $("#uploadImage1");
             //if (CheckFileSize(img.get(0).files[0].size)) {
             //    oFReader.readAsDataURL(img.get(0).files[0]);
 
