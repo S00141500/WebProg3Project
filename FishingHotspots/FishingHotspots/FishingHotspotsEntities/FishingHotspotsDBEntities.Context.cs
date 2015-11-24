@@ -25,16 +25,16 @@ namespace FishingHotspots.FishingHotspotsEntities
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<FishCaughtTbl> FishCaughtTbl { get; set; }
-        public virtual DbSet<FishSpeciesTbl> FishSpeciesTbl { get; set; }
-        public virtual DbSet<FishTypeTbl> FishTypeTbl { get; set; }
-        public virtual DbSet<LakesTbl> LakesTbl { get; set; }
-        public virtual DbSet<NewsTbl> NewsTbl { get; set; }
-        public virtual DbSet<RatingsTbl> RatingsTbl { get; set; }
-        public virtual DbSet<RegionsTbl> RegionsTbl { get; set; }
-        public virtual DbSet<ReviewsTbl> ReviewsTbl { get; set; }
-        public virtual DbSet<RiversTbl> RiversTbl { get; set; }
-        public virtual DbSet<UserRolesTbl> UserRolesTbl { get; set; }
-        public virtual DbSet<UsersTbl> UsersTbl { get; set; }
+        public virtual DbSet<FishCaughtTbl> FishCaughtTbls { get; set; }
+        public virtual DbSet<FishSpeciesTbl> FishSpeciesTbls { get; set; }
+        public virtual DbSet<FishTypeTbl> FishTypeTbls { get; set; }
+        public virtual DbSet<LakesTbl> LakesTbls { get; set; }
+        public virtual DbSet<NewsTbl> NewsTbls { get; set; }
+        public virtual DbSet<RatingsTbl> RatingsTbls { get; set; }
+        public virtual DbSet<RegionsTbl> RegionsTbls { get; set; }
+        public virtual DbSet<ReviewsTbl> ReviewsTbls { get; set; }
+        public virtual DbSet<RiversTbl> RiversTbls { get; set; }
+        public virtual DbSet<UserRolesTbl> UserRolesTbls { get; set; }
+        public virtual DbSet<UsersTbl> UsersTbls { get; set; }
     }
 }

@@ -12,10 +12,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="inside-banner">
-        <div class="container ">
-            <h2 class="pageHeader">Update Fishing Details</h2>
-
+  <div class="inside-banner">
+        <div class="container">
+            <span class="pull-right"><a href="Index.aspx">Home</a> /Fishing Details</span>
+            <h2>Update Fishing Details</h2>
         </div>
     </div>
 
@@ -25,10 +25,10 @@
             <asp:Label ID="lblStatus" runat="server" class="alert alert-success fade in" hidden="hidden"></asp:Label>
         </div>
 
-        <div class="col-md-offset-2 col-md-8 ">
+        <div class="col-md-offset-1 col-md-10 ">
 
             <!-- left column -->
-            <div class="col-md-6 form-horizontal formStyle" >
+            <div class="col-md-5 form-horizontal formStyle" >
                 <h3 class=" text-center h3-admin">Add Details</h3>
 
                 <div class="form-group">
@@ -65,7 +65,7 @@
 
 
             <!-- right column -->
-            <div class="col-md-6 form-horizontal formStyle">
+            <div class="col-md-5 col-md-offset-2 form-horizontal formStyle">
                 <h3 class=" text-center h3-admin">Delete Details</h3>
 
                 <div class="form-group">

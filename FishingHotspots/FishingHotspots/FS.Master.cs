@@ -11,7 +11,8 @@ namespace FishingHotspots
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            liWrite.Visible=true;
+            btnLogOut.Visible = false;
         }
 
         protected void btnSignIn_Click(object sender, EventArgs e)
@@ -22,6 +23,11 @@ namespace FishingHotspots
         protected void btnJoin_Click(object sender, EventArgs e)
         {
             Response.Redirect("Register.aspx");
+        }
+
+        protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

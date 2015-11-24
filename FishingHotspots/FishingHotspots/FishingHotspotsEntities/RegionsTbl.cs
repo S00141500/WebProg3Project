@@ -17,19 +17,19 @@ namespace FishingHotspots.FishingHotspotsEntities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public RegionsTbl()
         {
-            this.LakesTbl = new HashSet<LakesTbl>();
-            this.ReviewsTbl = new HashSet<ReviewsTbl>();
-            this.RiversTbl = new HashSet<RiversTbl>();
+            this.LakesTbls = new HashSet<LakesTbl>();
+            this.ReviewsTbls = new HashSet<ReviewsTbl>();
+            this.RiversTbls = new HashSet<RiversTbl>();
         }
     
         public int Id { get; set; }
         public string County { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LakesTbl> LakesTbl { get; set; }
+        public virtual ICollection<LakesTbl> LakesTbls { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReviewsTbl> ReviewsTbl { get; set; }
+        public virtual ICollection<ReviewsTbl> ReviewsTbls { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RiversTbl> RiversTbl { get; set; }
+        public virtual ICollection<RiversTbl> RiversTbls { get; set; }
     }
 }

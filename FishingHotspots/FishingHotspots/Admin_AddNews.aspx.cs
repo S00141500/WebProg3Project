@@ -41,7 +41,7 @@ namespace FishingHotspots
 
                     };
 
-                    db.NewsTbl.Add(news);
+                    //db.NewsTbl.Add(news);
                     db.SaveChanges();
                 }
                 catch

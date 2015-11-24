@@ -13,16 +13,9 @@
     text-shadow: 1px 1px 1px #212020, 2px 3px 2px #212020, 2px 2px 2px #212020;
 }
 
-.inside-banner {
-    width: 100%;
-    background-image: url('../images/bginside.jpg');
-}
-
-    .inside-banner .container {
-        padding: 20px 0;
-        text-align: center;
-        width: 100%;
-    }
+.inside-banner{background:url(../images/bginside.jpg) #222;color: #fff; padding: 30px 0;}
+.inside-banner h2{margin: 0; color: #fff;}
+.inside-banner span{margin-top: 10px;}
 
 .btnSaveNews {
     padding-top: 40px;

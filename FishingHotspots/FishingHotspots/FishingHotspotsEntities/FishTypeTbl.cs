@@ -17,16 +17,16 @@ namespace FishingHotspots.FishingHotspotsEntities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public FishTypeTbl()
         {
-            this.FishSpeciesTbl = new HashSet<FishSpeciesTbl>();
-            this.ReviewsTbl = new HashSet<ReviewsTbl>();
+            this.FishSpeciesTbls = new HashSet<FishSpeciesTbl>();
+            this.ReviewsTbls = new HashSet<ReviewsTbl>();
         }
     
         public byte id { get; set; }
         public string FishingTypeName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FishSpeciesTbl> FishSpeciesTbl { get; set; }
+        public virtual ICollection<FishSpeciesTbl> FishSpeciesTbls { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReviewsTbl> ReviewsTbl { get; set; }
+        public virtual ICollection<ReviewsTbl> ReviewsTbls { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Mark\Documents\College\Year3\Semester_1\WebProgramming\WebProgProjectData\FishingHotspots\FishingHotspots\FishingHotspotsEntities\ModelFisingHotspots.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Seamus Dillon\Desktop\WebProg3Project\FishingHotspots\FishingHotspots\FishingHotspotsEntities\FishingHotspotsDBEntities.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

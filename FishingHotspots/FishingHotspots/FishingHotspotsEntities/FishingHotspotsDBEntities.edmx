@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="FishingHotspotsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="FishingHotspotsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="FishCaughtTbl">
           <Key>
             <PropertyRef Name="Id" />
@@ -45,8 +45,8 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Text" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="PublishDate" Type="date" Nullable="false" />
-          <Property Name="Image" Type="image" />
+          <Property Name="PublishDate" Type="datetime" Nullable="false" />
+          <Property Name="Image" Type="varbinary(max)" />
           <Property Name="UserId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="RatingsTbl">
@@ -71,9 +71,9 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ReviewDate" Type="date" Nullable="false" />
-          <Property Name="ReviewText" Type="text" Nullable="false" />
-          <Property Name="Photo" Type="image" />
+          <Property Name="ReviewDate" Type="datetime" Nullable="false" />
+          <Property Name="ReviewText" Type="varchar(max)" Nullable="false" />
+          <Property Name="Photo" Type="varbinary(max)" />
           <Property Name="FishingType" Type="tinyint" Nullable="false" />
           <Property Name="Region" Type="int" Nullable="false" />
           <Property Name="Rating" Type="int" />
@@ -91,9 +91,11 @@
           <Key>
             <PropertyRef Name="UserId" />
             <PropertyRef Name="RoleName" />
+            <PropertyRef Name="RoleId" />
           </Key>
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="RoleName" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UsersTbl">
           <Key>
@@ -104,7 +106,7 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="35" Nullable="false" />
           <Property Name="Username" Type="nvarchar" MaxLength="35" />
           <Property Name="Email" Type="nvarchar" MaxLength="70" Nullable="false" />
-          <Property Name="PasswordHash" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Country" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <Association Name="FK_FishCaughtTbl_FishSpeciesTbl">
@@ -312,7 +314,8 @@
             <End Role="UserRolesTbl" EntitySet="UserRolesTbl" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FishingHotspotsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -335,7 +338,7 @@
           <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Type" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="FishCaughtTbl" Relationship="Self.FK_FishCaughtTbl_FishSpeciesTbl" FromRole="FishSpeciesTbl" ToRole="FishCaughtTbl" />
+          <NavigationProperty Name="FishCaughtTbls" Relationship="Self.FK_FishCaughtTbl_FishSpeciesTbl" FromRole="FishSpeciesTbl" ToRole="FishCaughtTbl" />
           <NavigationProperty Name="FishTypeTbl" Relationship="Self.FK_FishSpeciesTbl_FishTypeTbl" FromRole="FishSpeciesTbl" ToRole="FishTypeTbl" />
         </EntityType>
         <EntityType Name="FishTypeTbl">
@@ -344,8 +347,8 @@
           </Key>
           <Property Name="id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FishingTypeName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="FishSpeciesTbl" Relationship="Self.FK_FishSpeciesTbl_FishTypeTbl" FromRole="FishTypeTbl" ToRole="FishSpeciesTbl" />
-          <NavigationProperty Name="ReviewsTbl" Relationship="Self.FK_ReviewsTbl_FishTypeTbl" FromRole="FishTypeTbl" ToRole="ReviewsTbl" />
+          <NavigationProperty Name="FishSpeciesTbls" Relationship="Self.FK_FishSpeciesTbl_FishTypeTbl" FromRole="FishTypeTbl" ToRole="FishSpeciesTbl" />
+          <NavigationProperty Name="ReviewsTbls" Relationship="Self.FK_ReviewsTbl_FishTypeTbl" FromRole="FishTypeTbl" ToRole="ReviewsTbl" />
         </EntityType>
         <EntityType Name="LakesTbl">
           <Key>
@@ -363,7 +366,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Text" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="PublishDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PublishDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="UsersTbl" Relationship="Self.FK_NewsTbl_UsersTbl" FromRole="NewsTbl" ToRole="UsersTbl" />
@@ -377,7 +380,7 @@
           <Property Name="Review" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="UsersTbl" Relationship="Self.FK_RatingsTbl_UsersTbl" FromRole="RatingsTbl" ToRole="UsersTbl" />
-          <NavigationProperty Name="ReviewsTbl" Relationship="Self.FK_ReviewsTbl_RatingsTbl" FromRole="RatingsTbl" ToRole="ReviewsTbl" />
+          <NavigationProperty Name="ReviewsTbls" Relationship="Self.FK_ReviewsTbl_RatingsTbl" FromRole="RatingsTbl" ToRole="ReviewsTbl" />
         </EntityType>
         <EntityType Name="RegionsTbl">
           <Key>
@@ -385,9 +388,9 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="County" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="LakesTbl" Relationship="Self.FK_LakesTbl_RegionsTbl" FromRole="RegionsTbl" ToRole="LakesTbl" />
-          <NavigationProperty Name="ReviewsTbl" Relationship="Self.FK_ReviewsTbl_RegionsTbl" FromRole="RegionsTbl" ToRole="ReviewsTbl" />
-          <NavigationProperty Name="RiversTbl" Relationship="Self.FK_RiversTbl_RegionsTbl" FromRole="RegionsTbl" ToRole="RiversTbl" />
+          <NavigationProperty Name="LakesTbls" Relationship="Self.FK_LakesTbl_RegionsTbl" FromRole="RegionsTbl" ToRole="LakesTbl" />
+          <NavigationProperty Name="ReviewsTbls" Relationship="Self.FK_ReviewsTbl_RegionsTbl" FromRole="RegionsTbl" ToRole="ReviewsTbl" />
+          <NavigationProperty Name="RiversTbls" Relationship="Self.FK_RiversTbl_RegionsTbl" FromRole="RegionsTbl" ToRole="RiversTbl" />
         </EntityType>
         <EntityType Name="ReviewsTbl">
           <Key>
@@ -395,14 +398,14 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ReviewDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ReviewDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ReviewText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="FishingType" Type="Byte" Nullable="false" />
           <Property Name="Region" Type="Int32" Nullable="false" />
           <Property Name="Rating" Type="Int32" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="FishCaughtTbl" Relationship="Self.FK_FishCaughtTbl_ReviewsTbl" FromRole="ReviewsTbl" ToRole="FishCaughtTbl" />
+          <NavigationProperty Name="FishCaughtTbls" Relationship="Self.FK_FishCaughtTbl_ReviewsTbl" FromRole="ReviewsTbl" ToRole="FishCaughtTbl" />
           <NavigationProperty Name="FishTypeTbl" Relationship="Self.FK_ReviewsTbl_FishTypeTbl" FromRole="ReviewsTbl" ToRole="FishTypeTbl" />
           <NavigationProperty Name="RatingsTbl" Relationship="Self.FK_ReviewsTbl_RatingsTbl" FromRole="ReviewsTbl" ToRole="RatingsTbl" />
           <NavigationProperty Name="RegionsTbl" Relationship="Self.FK_ReviewsTbl_RegionsTbl" FromRole="ReviewsTbl" ToRole="RegionsTbl" />
@@ -421,10 +424,12 @@
           <Key>
             <PropertyRef Name="UserId" />
             <PropertyRef Name="RoleName" />
+            <PropertyRef Name="RoleId" />
           </Key>
           <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="UsersTbl" Relationship="Self.FK_UserRolesTbl_UsersTbl" FromRole="UserRolesTbl" ToRole="UsersTbl" />
-          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
         </EntityType>
         <EntityType Name="UsersTbl">
           <Key>
@@ -435,12 +440,12 @@
           <Property Name="LastName" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Username" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Country" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="NewsTbl" Relationship="Self.FK_NewsTbl_UsersTbl" FromRole="UsersTbl" ToRole="NewsTbl" />
-          <NavigationProperty Name="RatingsTbl" Relationship="Self.FK_RatingsTbl_UsersTbl" FromRole="UsersTbl" ToRole="RatingsTbl" />
-          <NavigationProperty Name="ReviewsTbl" Relationship="Self.FK_ReviewsTbl_UsersTbl" FromRole="UsersTbl" ToRole="ReviewsTbl" />
-          <NavigationProperty Name="UserRolesTbl" Relationship="Self.FK_UserRolesTbl_UsersTbl" FromRole="UsersTbl" ToRole="UserRolesTbl" />
+          <NavigationProperty Name="NewsTbls" Relationship="Self.FK_NewsTbl_UsersTbl" FromRole="UsersTbl" ToRole="NewsTbl" />
+          <NavigationProperty Name="RatingsTbls" Relationship="Self.FK_RatingsTbl_UsersTbl" FromRole="UsersTbl" ToRole="RatingsTbl" />
+          <NavigationProperty Name="ReviewsTbls" Relationship="Self.FK_ReviewsTbl_UsersTbl" FromRole="UsersTbl" ToRole="ReviewsTbl" />
+          <NavigationProperty Name="UserRolesTbls" Relationship="Self.FK_UserRolesTbl_UsersTbl" FromRole="UsersTbl" ToRole="UserRolesTbl" />
         </EntityType>
         <Association Name="FK_FishCaughtTbl_FishSpeciesTbl">
           <End Role="FishSpeciesTbl" Type="Self.FishSpeciesTbl" Multiplicity="1" />
@@ -586,65 +591,65 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="FishingHotspotsDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="FishCaughtTbl" EntityType="Self.FishCaughtTbl" />
-          <EntitySet Name="FishSpeciesTbl" EntityType="Self.FishSpeciesTbl" />
-          <EntitySet Name="FishTypeTbl" EntityType="Self.FishTypeTbl" />
-          <EntitySet Name="LakesTbl" EntityType="Self.LakesTbl" />
-          <EntitySet Name="NewsTbl" EntityType="Self.NewsTbl" />
-          <EntitySet Name="RatingsTbl" EntityType="Self.RatingsTbl" />
-          <EntitySet Name="RegionsTbl" EntityType="Self.RegionsTbl" />
-          <EntitySet Name="ReviewsTbl" EntityType="Self.ReviewsTbl" />
-          <EntitySet Name="RiversTbl" EntityType="Self.RiversTbl" />
-          <EntitySet Name="UserRolesTbl" EntityType="Self.UserRolesTbl" />
-          <EntitySet Name="UsersTbl" EntityType="Self.UsersTbl" />
+        <EntityContainer Name="FishingHotspotsDBEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FishCaughtTbls" EntityType="Self.FishCaughtTbl" />
+          <EntitySet Name="FishSpeciesTbls" EntityType="Self.FishSpeciesTbl" />
+          <EntitySet Name="FishTypeTbls" EntityType="Self.FishTypeTbl" />
+          <EntitySet Name="LakesTbls" EntityType="Self.LakesTbl" />
+          <EntitySet Name="NewsTbls" EntityType="Self.NewsTbl" />
+          <EntitySet Name="RatingsTbls" EntityType="Self.RatingsTbl" />
+          <EntitySet Name="RegionsTbls" EntityType="Self.RegionsTbl" />
+          <EntitySet Name="ReviewsTbls" EntityType="Self.ReviewsTbl" />
+          <EntitySet Name="RiversTbls" EntityType="Self.RiversTbl" />
+          <EntitySet Name="UserRolesTbls" EntityType="Self.UserRolesTbl" />
+          <EntitySet Name="UsersTbls" EntityType="Self.UsersTbl" />
           <AssociationSet Name="FK_FishCaughtTbl_FishSpeciesTbl" Association="Self.FK_FishCaughtTbl_FishSpeciesTbl">
-            <End Role="FishSpeciesTbl" EntitySet="FishSpeciesTbl" />
-            <End Role="FishCaughtTbl" EntitySet="FishCaughtTbl" />
+            <End Role="FishSpeciesTbl" EntitySet="FishSpeciesTbls" />
+            <End Role="FishCaughtTbl" EntitySet="FishCaughtTbls" />
           </AssociationSet>
           <AssociationSet Name="FK_FishCaughtTbl_ReviewsTbl" Association="Self.FK_FishCaughtTbl_ReviewsTbl">
-            <End Role="ReviewsTbl" EntitySet="ReviewsTbl" />
-            <End Role="FishCaughtTbl" EntitySet="FishCaughtTbl" />
+            <End Role="ReviewsTbl" EntitySet="ReviewsTbls" />
+            <End Role="FishCaughtTbl" EntitySet="FishCaughtTbls" />
           </AssociationSet>
           <AssociationSet Name="FK_FishSpeciesTbl_FishTypeTbl" Association="Self.FK_FishSpeciesTbl_FishTypeTbl">
-            <End Role="FishTypeTbl" EntitySet="FishTypeTbl" />
-            <End Role="FishSpeciesTbl" EntitySet="FishSpeciesTbl" />
+            <End Role="FishTypeTbl" EntitySet="FishTypeTbls" />
+            <End Role="FishSpeciesTbl" EntitySet="FishSpeciesTbls" />
           </AssociationSet>
           <AssociationSet Name="FK_ReviewsTbl_FishTypeTbl" Association="Self.FK_ReviewsTbl_FishTypeTbl">
-            <End Role="FishTypeTbl" EntitySet="FishTypeTbl" />
-            <End Role="ReviewsTbl" EntitySet="ReviewsTbl" />
+            <End Role="FishTypeTbl" EntitySet="FishTypeTbls" />
+            <End Role="ReviewsTbl" EntitySet="ReviewsTbls" />
           </AssociationSet>
           <AssociationSet Name="FK_LakesTbl_RegionsTbl" Association="Self.FK_LakesTbl_RegionsTbl">
-            <End Role="RegionsTbl" EntitySet="RegionsTbl" />
-            <End Role="LakesTbl" EntitySet="LakesTbl" />
+            <End Role="RegionsTbl" EntitySet="RegionsTbls" />
+            <End Role="LakesTbl" EntitySet="LakesTbls" />
           </AssociationSet>
           <AssociationSet Name="FK_NewsTbl_UsersTbl" Association="Self.FK_NewsTbl_UsersTbl">
-            <End Role="UsersTbl" EntitySet="UsersTbl" />
-            <End Role="NewsTbl" EntitySet="NewsTbl" />
+            <End Role="UsersTbl" EntitySet="UsersTbls" />
+            <End Role="NewsTbl" EntitySet="NewsTbls" />
           </AssociationSet>
           <AssociationSet Name="FK_RatingsTbl_UsersTbl" Association="Self.FK_RatingsTbl_UsersTbl">
-            <End Role="UsersTbl" EntitySet="UsersTbl" />
-            <End Role="RatingsTbl" EntitySet="RatingsTbl" />
+            <End Role="UsersTbl" EntitySet="UsersTbls" />
+            <End Role="RatingsTbl" EntitySet="RatingsTbls" />
           </AssociationSet>
           <AssociationSet Name="FK_ReviewsTbl_RatingsTbl" Association="Self.FK_ReviewsTbl_RatingsTbl">
-            <End Role="RatingsTbl" EntitySet="RatingsTbl" />
-            <End Role="ReviewsTbl" EntitySet="ReviewsTbl" />
+            <End Role="RatingsTbl" EntitySet="RatingsTbls" />
+            <End Role="ReviewsTbl" EntitySet="ReviewsTbls" />
           </AssociationSet>
           <AssociationSet Name="FK_ReviewsTbl_RegionsTbl" Association="Self.FK_ReviewsTbl_RegionsTbl">
-            <End Role="RegionsTbl" EntitySet="RegionsTbl" />
-            <End Role="ReviewsTbl" EntitySet="ReviewsTbl" />
+            <End Role="RegionsTbl" EntitySet="RegionsTbls" />
+            <End Role="ReviewsTbl" EntitySet="ReviewsTbls" />
           </AssociationSet>
           <AssociationSet Name="FK_RiversTbl_RegionsTbl" Association="Self.FK_RiversTbl_RegionsTbl">
-            <End Role="RegionsTbl" EntitySet="RegionsTbl" />
-            <End Role="RiversTbl" EntitySet="RiversTbl" />
+            <End Role="RegionsTbl" EntitySet="RegionsTbls" />
+            <End Role="RiversTbl" EntitySet="RiversTbls" />
           </AssociationSet>
           <AssociationSet Name="FK_ReviewsTbl_UsersTbl" Association="Self.FK_ReviewsTbl_UsersTbl">
-            <End Role="UsersTbl" EntitySet="UsersTbl" />
-            <End Role="ReviewsTbl" EntitySet="ReviewsTbl" />
+            <End Role="UsersTbl" EntitySet="UsersTbls" />
+            <End Role="ReviewsTbl" EntitySet="ReviewsTbls" />
           </AssociationSet>
           <AssociationSet Name="FK_UserRolesTbl_UsersTbl" Association="Self.FK_UserRolesTbl_UsersTbl">
-            <End Role="UsersTbl" EntitySet="UsersTbl" />
-            <End Role="UserRolesTbl" EntitySet="UserRolesTbl" />
+            <End Role="UsersTbl" EntitySet="UsersTbls" />
+            <End Role="UserRolesTbl" EntitySet="UserRolesTbls" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -652,8 +657,8 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="FishingHotspotsDBModelStoreContainer" CdmEntityContainer="FishingHotspotsDBEntities">
-          <EntitySetMapping Name="FishCaughtTbl">
+        <EntityContainerMapping StorageEntityContainer="FishingHotspotsDBModelStoreContainer" CdmEntityContainer="FishingHotspotsDBEntities2">
+          <EntitySetMapping Name="FishCaughtTbls">
             <EntityTypeMapping TypeName="FishingHotspotsDBModel.FishCaughtTbl">
               <MappingFragment StoreEntitySet="FishCaughtTbl">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -664,7 +669,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="FishSpeciesTbl">
+          <EntitySetMapping Name="FishSpeciesTbls">
             <EntityTypeMapping TypeName="FishingHotspotsDBModel.FishSpeciesTbl">
               <MappingFragment StoreEntitySet="FishSpeciesTbl">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -673,7 +678,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="FishTypeTbl">
+          <EntitySetMapping Name="FishTypeTbls">
             <EntityTypeMapping TypeName="FishingHotspotsDBModel.FishTypeTbl">
               <MappingFragment StoreEntitySet="FishTypeTbl">
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -681,7 +686,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="LakesTbl">
+          <EntitySetMapping Name="LakesTbls">
             <EntityTypeMapping TypeName="FishingHotspotsDBModel.LakesTbl">
               <MappingFragment StoreEntitySet="LakesTbl">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -690,7 +695,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="NewsTbl">
+          <EntitySetMapping Name="NewsTbls">
             <EntityTypeMapping TypeName="FishingHotspotsDBModel.NewsTbl">
               <MappingFragment StoreEntitySet="NewsTbl">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -702,7 +707,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RatingsTbl">
+          <EntitySetMapping Name="RatingsTbls">
             <EntityTypeMapping TypeName="FishingHotspotsDBModel.RatingsTbl">
               <MappingFragment StoreEntitySet="RatingsTbl">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -712,7 +717,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RegionsTbl">
+          <EntitySetMapping Name="RegionsTbls">
             <EntityTypeMapping TypeName="FishingHotspotsDBModel.RegionsTbl">
               <MappingFragment StoreEntitySet="RegionsTbl">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -720,7 +725,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ReviewsTbl">
+          <EntitySetMapping Name="ReviewsTbls">
             <EntityTypeMapping TypeName="FishingHotspotsDBModel.ReviewsTbl">
               <MappingFragment StoreEntitySet="ReviewsTbl">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -735,7 +740,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RiversTbl">
+          <EntitySetMapping Name="RiversTbls">
             <EntityTypeMapping TypeName="FishingHotspotsDBModel.RiversTbl">
               <MappingFragment StoreEntitySet="RiversTbl">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -744,15 +749,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserRolesTbl">
+          <EntitySetMapping Name="UserRolesTbls">
             <EntityTypeMapping TypeName="FishingHotspotsDBModel.UserRolesTbl">
               <MappingFragment StoreEntitySet="UserRolesTbl">
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UsersTbl">
+          <EntitySetMapping Name="UsersTbls">
             <EntityTypeMapping TypeName="FishingHotspotsDBModel.UsersTbl">
               <MappingFragment StoreEntitySet="UsersTbl">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -779,7 +785,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

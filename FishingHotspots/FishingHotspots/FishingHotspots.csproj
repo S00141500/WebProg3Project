@@ -98,15 +98,16 @@
     <Content Include="assets\style.css" />
     <Content Include="CSS\PageForms.css" />
     <Content Include="CSS\Register.css" />
-    <Content Include="FishingHotspotsEntities\ModelFisingHotspots.Context.tt">
+    <Content Include="CSS\Reviews.css" />
+    <Content Include="FishingHotspotsEntities\FishingHotspotsDBEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelFisingHotspots.edmx</DependentUpon>
-      <LastGenOutput>ModelFisingHotspots.Context.cs</LastGenOutput>
+      <DependentUpon>FishingHotspotsDBEntities.edmx</DependentUpon>
+      <LastGenOutput>FishingHotspotsDBEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="FishingHotspotsEntities\ModelFisingHotspots.tt">
+    <Content Include="FishingHotspotsEntities\FishingHotspotsDBEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelFisingHotspots.edmx</DependentUpon>
-      <LastGenOutput>ModelFisingHotspots.cs</LastGenOutput>
+      <DependentUpon>FishingHotspotsDBEntities.edmx</DependentUpon>
+      <LastGenOutput>FishingHotspotsDBEntities.cs</LastGenOutput>
     </Content>
     <Content Include="images\about.jpg" />
     <Content Include="images\advertisements.jpg" />
@@ -140,6 +141,7 @@
     <Content Include="images\twitter.png" />
     <Content Include="Index.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="Reviews.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -158,52 +160,52 @@
       <DependentUpon>Admin_Update_Delete.aspx</DependentUpon>
     </Compile>
     <Compile Include="FishingHotspotsEntities\FishCaughtTbl.cs">
-      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+      <DependentUpon>FishingHotspotsDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FishingHotspotsEntities\FishingHotspotsDBEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FishingHotspotsDBEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FishingHotspotsEntities\FishingHotspotsDBEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FishingHotspotsDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FishingHotspotsEntities\FishingHotspotsDBEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FishingHotspotsDBEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="FishingHotspotsEntities\FishSpeciesTbl.cs">
-      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+      <DependentUpon>FishingHotspotsDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="FishingHotspotsEntities\FishTypeTbl.cs">
-      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+      <DependentUpon>FishingHotspotsDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="FishingHotspotsEntities\LakesTbl.cs">
-      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FishingHotspotsEntities\ModelFisingHotspots.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelFisingHotspots.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FishingHotspotsEntities\ModelFisingHotspots.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FishingHotspotsEntities\ModelFisingHotspots.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelFisingHotspots.edmx</DependentUpon>
+      <DependentUpon>FishingHotspotsDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="FishingHotspotsEntities\NewsTbl.cs">
-      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+      <DependentUpon>FishingHotspotsDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="FishingHotspotsEntities\RatingsTbl.cs">
-      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+      <DependentUpon>FishingHotspotsDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="FishingHotspotsEntities\RegionsTbl.cs">
-      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+      <DependentUpon>FishingHotspotsDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="FishingHotspotsEntities\ReviewsTbl.cs">
-      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+      <DependentUpon>FishingHotspotsDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="FishingHotspotsEntities\RiversTbl.cs">
-      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+      <DependentUpon>FishingHotspotsDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="FishingHotspotsEntities\UserRolesTbl.cs">
-      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+      <DependentUpon>FishingHotspotsDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="FishingHotspotsEntities\UsersTbl.cs">
-      <DependentUpon>ModelFisingHotspots.tt</DependentUpon>
+      <DependentUpon>FishingHotspotsDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="FS.Master.cs">
       <DependentUpon>FS.Master</DependentUpon>
@@ -227,6 +229,13 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reviews.aspx.cs">
+      <DependentUpon>Reviews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reviews.aspx.designer.cs">
+      <DependentUpon>Reviews.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="FS.Master" />
@@ -237,14 +246,14 @@
     <Content Include="assets\fonts\din.ttf" />
     <Content Include="assets\fonts\din.woff" />
     <Content Include="assets\owl-carousel\.DS_Store" />
-    <EntityDeploy Include="FishingHotspotsEntities\ModelFisingHotspots.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelFisingHotspots.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="FishingHotspotsEntities\ModelFisingHotspots.edmx.diagram">
-      <DependentUpon>ModelFisingHotspots.edmx</DependentUpon>
-    </Content>
     <Content Include="packages.config" />
+    <EntityDeploy Include="FishingHotspotsEntities\FishingHotspotsDBEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FishingHotspotsDBEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="FishingHotspotsEntities\FishingHotspotsDBEntities.edmx.diagram">
+      <DependentUpon>FishingHotspotsDBEntities.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

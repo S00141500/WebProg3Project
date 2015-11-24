@@ -17,10 +17,10 @@ namespace FishingHotspots.FishingHotspotsEntities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UsersTbl()
         {
-            this.NewsTbl = new HashSet<NewsTbl>();
-            this.RatingsTbl = new HashSet<RatingsTbl>();
-            this.ReviewsTbl = new HashSet<ReviewsTbl>();
-            this.UserRolesTbl = new HashSet<UserRolesTbl>();
+            this.NewsTbls = new HashSet<NewsTbl>();
+            this.RatingsTbls = new HashSet<RatingsTbl>();
+            this.ReviewsTbls = new HashSet<ReviewsTbl>();
+            this.UserRolesTbls = new HashSet<UserRolesTbl>();
         }
     
         public int UserId { get; set; }
@@ -32,12 +32,12 @@ namespace FishingHotspots.FishingHotspotsEntities
         public string Country { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NewsTbl> NewsTbl { get; set; }
+        public virtual ICollection<NewsTbl> NewsTbls { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RatingsTbl> RatingsTbl { get; set; }
+        public virtual ICollection<RatingsTbl> RatingsTbls { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReviewsTbl> ReviewsTbl { get; set; }
+        public virtual ICollection<ReviewsTbl> ReviewsTbls { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserRolesTbl> UserRolesTbl { get; set; }
+        public virtual ICollection<UserRolesTbl> UserRolesTbls { get; set; }
     }
 }

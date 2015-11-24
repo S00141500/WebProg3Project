@@ -17,7 +17,7 @@ namespace FishingHotspots.FishingHotspotsEntities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public RatingsTbl()
         {
-            this.ReviewsTbl = new HashSet<ReviewsTbl>();
+            this.ReviewsTbls = new HashSet<ReviewsTbl>();
         }
     
         public int Id { get; set; }
@@ -27,6 +27,6 @@ namespace FishingHotspots.FishingHotspotsEntities
     
         public virtual UsersTbl UsersTbl { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReviewsTbl> ReviewsTbl { get; set; }
+        public virtual ICollection<ReviewsTbl> ReviewsTbls { get; set; }
     }
 }

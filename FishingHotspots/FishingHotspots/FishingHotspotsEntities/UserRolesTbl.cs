@@ -16,6 +16,7 @@ namespace FishingHotspots.FishingHotspotsEntities
     {
         public int UserId { get; set; }
         public string RoleName { get; set; }
+        public int RoleId { get; set; }
     
         public virtual UsersTbl UsersTbl { get; set; }
     }

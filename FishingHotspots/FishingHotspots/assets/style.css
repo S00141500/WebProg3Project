@@ -53,10 +53,10 @@ table{background-color: #fff;}
 .banner-search h3{color: #fff;}
 
 
-.properties-listing .viewall{margin-top: 15px;}
-.properties-listing div.properties{padding: 10px; background-color: #fff;text-align: center; margin-bottom: 20px;}
-.owl-wrapper-outer div.properties{margin: 0 5px;}
-.properties-listing div.properties .image-holder{position: relative;}
+.Fishing-listing .viewall{margin-top: 15px;}
+.Fishing-listing div.Fishing{padding: 10px; background-color: #fff;text-align: center; margin-bottom: 20px;}
+.owl-wrapper-outer div.Fishing{margin: 0 5px;}
+.Fishing-listing div.properties .image-holder{position: relative;}
 .properties-listing div.properties .status{position: absolute;bottom: 0;z-index: 100;display: block;width: 100%;color: #fff;padding:0 3px;text-align: right; font-size: 12px;}
 .properties-listing div.properties p{margin-bottom: 10px; font-size: 14px;border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;padding: 5px 0;font-family: din;}
 

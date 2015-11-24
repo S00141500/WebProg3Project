@@ -2,17 +2,12 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Add News | Admin</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" href="CSS/master.css" />
-    <link rel="stylesheet" href="CSS/PageForms.css" />
+    <link href="CSS/Register.css" rel="stylesheet" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.js"></script>
-    <script type="text/javascript">
+    <script>
         $(document).ready(function () {
 
             $('#btnUploadImg').click(function () {
-
-
 
             });
 
@@ -42,52 +37,33 @@
 
 
     </script>
-    <link href="CSS/PageForms.css" type="text/css" rel="stylesheet" />
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="inside-banner">
-        <div class="container ">
-            <h2 class="pageHeader">Add News Story</h2>
-
+        <div class="container">
+            <span class="pull-right"><a href="Index.aspx">Home</a> / Add News Story</span>
+            <h2>Add News Story</h2>
         </div>
     </div>
 
-    <div class="col-md-12 form-horizontal formStyle">
+    <div class="container">
+        <div class="spacer">
+            <div class="row register">
+                <div class="col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 ">
+                    
+                    <asp:TextBox ID="txtTitle" placeholder="Title" runat="server" class="form-control"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="ReqValTitle" CssClass="alert-danger" runat="server" ErrorMessage="The News Story must have a Title!" ControlToValidate="txtTitle"></asp:RequiredFieldValidator>
 
-        <div><asp:Label ID="lblStatus" runat="server" class="alert alert-success fade in" hidden="hidden"></asp:Label></div>
+                    <asp:TextBox ID="txtDescription" placeholder="Description" CssClass="form-control" runat="server" TextMode="MultiLine" Rows="10"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="ReqValDescription" CssClass="alert-danger" runat="server" ErrorMessage="Please write the news story! " ControlToValidate="txtDescription"></asp:RequiredFieldValidator>
 
-        <div class="col-md-offset-3 col-md-6">
-            <div class="form-group">
-                <label class="control-label col-sm-3 text-left">Title:</label>
-                <div class="col-sm-9">
-                    <asp:TextBox ID="txtTitle" runat="server" CssClass="form-control" Width="300px"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="ReqValTitle" runat="server" ErrorMessage="The News Sotry must have a Title!" ControlToValidate="txtTitle"></asp:RequiredFieldValidator>
+                    <asp:FileUpload ID="FileUpload1" CssClass="form-control" runat="server" />
+                    <asp:Label ID="lblStatus" runat="server" ></asp:Label>
+                    <asp:Button ID="btnSaveNews" CssClass="btn-success btn btn-default" runat="server" OnClick="btnSaveNews_Click" Text="Save News" />
                 </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-sm-3 text-left">Description:</label>
-                <div class="col-sm-9">
-                    <asp:TextBox ID="txtDescription" CssClass="form-control" runat="server" TextMode="MultiLine" Rows="10"
-                        Width="300px"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="ReqValDescription" runat="server" ErrorMessage="Please write the news story! " ControlToValidate="txtDescription"></asp:RequiredFieldValidator>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-sm-3 text-left">Upload Image:</label>
-                <div class="col-sm-9">
-                    <asp:FileUpload ID="FileUpload1" CssClass="form-control" width="300px" runat="server" />
-                </div>
-                </div>
-
-                <div class="form-group btnSaveNews">
-                    <div class="col-sm-offset-3 col-sm-6">
-                        <asp:Button ID="btnSaveNews" CssClass="btn-success btn btn-default" runat="server" OnClick="btnSaveNews_Click"  Text="Save News" />
-                    </div>
-                </div>
-
             </div>
         </div>
+    </div>
 </asp:Content>

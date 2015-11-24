@@ -17,7 +17,7 @@ namespace FishingHotspots.FishingHotspotsEntities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public FishSpeciesTbl()
         {
-            this.FishCaughtTbl = new HashSet<FishCaughtTbl>();
+            this.FishCaughtTbls = new HashSet<FishCaughtTbl>();
         }
     
         public byte Id { get; set; }
@@ -25,7 +25,7 @@ namespace FishingHotspots.FishingHotspotsEntities
         public byte Type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FishCaughtTbl> FishCaughtTbl { get; set; }
+        public virtual ICollection<FishCaughtTbl> FishCaughtTbls { get; set; }
         public virtual FishTypeTbl FishTypeTbl { get; set; }
     }
 }

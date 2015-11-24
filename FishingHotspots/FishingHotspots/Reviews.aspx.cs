@@ -7,19 +7,16 @@ using System.Web.UI.WebControls;
 
 namespace FishingHotspots
 {
-    public partial class Register : System.Web.UI.Page
+    public partial class Reviews : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
         }
 
-        protected void btnRegister_Click(object sender, EventArgs e)
+        protected void btnFindNow_Click(object sender, EventArgs e)
         {
-            if(IsValid)
-            {
 
-            }
         }
     }
 }
