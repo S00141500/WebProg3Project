@@ -4,14 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using FishingHotspots.FishingHotspotsEntities;
 using PasswordHashTool;
 
 namespace FishingHotspots
 {
     public partial class Admin : System.Web.UI.Page
     {
-        FishingHotspotsDBEntities db = new FishingHotspotsDBEntities();
         private delegate string newsDel(bool b);
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,18 +29,6 @@ namespace FishingHotspots
             {
                 try
                 {
-                    NewsTbl news = new NewsTbl
-                    {
-                        Title = txtTitle.Text,
-                        Text = txtDescription.Text,
-                        PublishDate = DateTime.Now,
-                        Image = null,
-                        UserId = GetAdminId()
-
-                    };
-
-                    //db.NewsTbl.Add(news);
-                    db.SaveChanges();
                 }
                 catch
                 {

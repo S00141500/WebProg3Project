@@ -1,5 +1,4 @@
-﻿using FishingHotspots.FishingHotspotsEntities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +9,6 @@ namespace FishingHotspots
 {
     public partial class Admin_Update_Delete : System.Web.UI.Page
     {
-        FishingHotspotsDBEntities db = new FishingHotspotsDBEntities();
 
         protected void Page_Load(object sender, EventArgs e)
         {
