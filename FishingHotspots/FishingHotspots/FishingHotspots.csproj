@@ -133,6 +133,7 @@
     <Content Include="Register.aspx" />
     <Content Include="Reviews.aspx" />
     <Content Include="Web.config" />
+    <Content Include="Write_Review.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin_AddNews.aspx.cs">
@@ -177,6 +178,13 @@
     </Compile>
     <Compile Include="Reviews.aspx.designer.cs">
       <DependentUpon>Reviews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Write_Review.aspx.cs">
+      <DependentUpon>Write_Review.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Write_Review.aspx.designer.cs">
+      <DependentUpon>Write_Review.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

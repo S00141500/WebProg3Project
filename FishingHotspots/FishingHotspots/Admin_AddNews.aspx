@@ -57,9 +57,9 @@
                     <asp:RequiredFieldValidator ID="ReqValTitle" CssClass="alert-danger" runat="server" ErrorMessage="The News Story must have a Title!" ControlToValidate="txtTitle"></asp:RequiredFieldValidator>
 
                     <asp:TextBox ID="txtDescription" placeholder="Description" CssClass="form-control" runat="server" TextMode="MultiLine" Rows="10"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="ReqValDescription" CssClass="alert-danger" runat="server" ErrorMessage="Please write the news story! " ControlToValidate="txtDescription"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="ReqValDescription" CssClass="alert-danger" runat="server" ErrorMessage="Please write the news story! " Display="Dynamic" ControlToValidate="txtDescription"></asp:RequiredFieldValidator>
 
-                    <asp:FileUpload ID="FileUpload1" CssClass="form-control" runat="server" />
+                    *Upload Image<asp:FileUpload ID="FileUpload1" CssClass="form-control" runat="server" />
                     <asp:Label ID="lblStatus" runat="server" ></asp:Label>
                     <asp:Button ID="btnSaveNews" CssClass="btn-success btn btn-default" runat="server" OnClick="btnSaveNews_Click" Text="Save News" />
                 </div>
