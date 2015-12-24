@@ -9,28 +9,25 @@
 
             $('#btnUploadImg').click(function () {
 
+                var oFevent;
+                var oFReader = new FileReader();
+                //var img = $("#uploadImage1");
+                if (CheckFileSize(img.get(0).files[0].size)) {
+                    oFReader.readAsDataURL(img.get(0).files[0]);
+
+
+                    $(oFReader).load(function (e) {
+                        oFevent = e.target.result;
+                        $("#uploadPreview1").attr({ "src": e.target.result.toString()});
+
+                    });
+                } else {
+
+                    alert("File size must be less than 12 MB");
+                }
+
+
             });
-
-            //var oFevent;
-            //var oFReader = new FileReader();
-            ////var img = $("#uploadImage1");
-            //if (CheckFileSize(img.get(0).files[0].size)) {
-            //    oFReader.readAsDataURL(img.get(0).files[0]);
-
-
-            //    $(oFReader).load(function (e) {
-            //        oFevent = e.target.result;
-            //        $("#uploadPreview1").attr({ "src": e.target.result.toString()});
-
-            //    });
-            //} else {
-
-            //    alert("File size must be less than 12 MB");
-            //}
-
-
-
-
 
         });
 
@@ -59,7 +56,7 @@
                     <asp:TextBox ID="txtDescription" placeholder="Description" CssClass="form-control" runat="server" TextMode="MultiLine" Rows="10"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="ReqValDescription" CssClass="alert-danger" runat="server" ErrorMessage="Please write the news story! " Display="Dynamic" ControlToValidate="txtDescription"></asp:RequiredFieldValidator>
 
-                    *Upload Image<asp:FileUpload ID="FileUpload1" CssClass="form-control" runat="server" />
+                    *Upload Image<asp:FileUpload ID="ImgUpload" CssClass="form-control" runat="server" />
                     <asp:Label ID="lblStatus" runat="server" ></asp:Label>
                     <asp:Button ID="btnSaveNews" CssClass="btn-success btn btn-default" runat="server" OnClick="btnSaveNews_Click" Text="Save News" />
                 </div>

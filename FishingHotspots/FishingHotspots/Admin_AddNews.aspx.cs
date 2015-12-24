@@ -19,16 +19,15 @@ namespace FishingHotspots
 
         protected void btnSaveNews_Click(object sender, EventArgs e)
         {
-            //string pwd = PasswordHashTool.PasswordHashManager.CreateHash("Liverpool");
-
-            //if(PasswordHashManager.ValidatePassword("Liverpool",pwd))
-            //{
-            //    Response.Write("it works");
-            //}
             if (IsValid)
             {
                 try
                 {
+                    byte[] image = new byte[] { };
+                    if (ImgUpload.PostedFile != null)
+                    {
+                        image = UploadImage();
+                    }
                 }
                 catch
                 {
@@ -69,6 +68,18 @@ namespace FishingHotspots
             return "";
         }
 
+        // Gets the posted image in binary
+        private byte[] UploadImage()
+        {
+            // creates a new byte array to store image
+            byte[] img = new byte[ImgUpload.PostedFile.ContentLength];
+
+            // Reads posted image into byte[] img
+            HttpPostedFile image = ImgUpload.PostedFile;
+            image.InputStream.Read(img, 0, (int)ImgUpload.PostedFile.ContentLength);
+
+            return img;
+        }
 
     }
 }
