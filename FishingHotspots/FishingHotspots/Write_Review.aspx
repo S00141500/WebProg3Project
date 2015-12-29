@@ -31,11 +31,11 @@
                     
                     <asp:RequiredFieldValidator ID="rfvType" runat="server" ErrorMessage="RequiredFieldValidator" Text="*Please select Fish Type" ControlToValidate="ddlType" CssClass="alert-danger" Display="Dynamic" ValidationGroup="Register"></asp:RequiredFieldValidator>
                     <asp:DropDownList ID="ddlType" placeholder="Type" runat="server" CssClass="form-control" onchange="showSpecies()" >
-                        <asp:ListItem Value="0">Coarse</asp:ListItem>
-                        <asp:ListItem Value="1">Game</asp:ListItem>
+                        <asp:ListItem value="0">Coarse</asp:ListItem>
+                        <asp:ListItem value="1">Game</asp:ListItem>
                     </asp:DropDownList>
                     
-                    <div id="Coarsediv" hidden="hidden">
+                    <div id="Coarsediv">
                     <asp:CheckBoxList ID="cbxCoarse" runat="server">
                         <asp:ListItem>thing</asp:ListItem>
                     </asp:CheckBoxList>
@@ -61,8 +61,9 @@
     <script>
 
         function showSpecies() {
+            var value = $(<%=ddlType.ClientID %>).val();
 
-            if ($('ddlType').val() == 0) {
+            if (value == 0) {
                 $('#Gamediv').hide(500);
                 $('#Coarsediv').show(500);
             }

@@ -12,12 +12,12 @@
     </div>
     <!-- banner -->
 
-
     <div class="container">
         <div class="spacer">
             <div class="row register">
                 <div class="col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 ">
                     
+                    <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
                     <asp:RequiredFieldValidator ID="rfvFirstName" runat="server" ErrorMessage="RequiredFieldValidator" Text="*Please enter First Name" ControlToValidate="txtFirstName" CssClass="alert-danger" Display="Dynamic" ValidationGroup="Register"></asp:RequiredFieldValidator>
                     <asp:TextBox ID="txtFirstName" placeholder="First Name" runat="server" class="form-control" ></asp:TextBox>
                     
