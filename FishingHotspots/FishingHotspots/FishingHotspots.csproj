@@ -74,10 +74,10 @@
   <ItemGroup>
     <Content Include="Admin_AddNews.aspx" />
     <Content Include="Admin_Update_Delete.aspx" />
-    <Content Include="App_Data\FishingHotspotsDB.mdf" />
-    <Content Include="App_Data\FishingHotspotsDB_log.ldf">
+    <Content Include="App_Data\FishingHotspotsDB.ldf">
       <DependentUpon>FishingHotspotsDB.mdf</DependentUpon>
     </Content>
+    <Content Include="App_Data\FishingHotspotsDB.mdf" />
     <Content Include="assets\bootstrap\css\bootstrap.css" />
     <Content Include="assets\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\bootstrap\js\bootstrap.js" />
