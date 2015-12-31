@@ -17,7 +17,7 @@
             <div class="row register">
                 <div class="col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 ">
                     
-                    <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+                    <asp:Label ID="lblError" runat="server" Text="" CssClass="alert-danger" Display="Dynamic"></asp:Label>
                     <asp:RequiredFieldValidator ID="rfvFirstName" runat="server" ErrorMessage="RequiredFieldValidator" Text="*Please enter First Name" ControlToValidate="txtFirstName" CssClass="alert-danger" Display="Dynamic" ValidationGroup="Register"></asp:RequiredFieldValidator>
                     <asp:TextBox ID="txtFirstName" placeholder="First Name" runat="server" class="form-control" ></asp:TextBox>
                     
@@ -29,7 +29,7 @@
                     
                     <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ErrorMessage="RequiredFieldValidator" Text="*Please enter Email Address" ControlToValidate="txtEmail" CssClass="alert-danger" Display="Dynamic" ValidationGroup="Register"></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="reEmail" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="txtEmail" ValidationGroup="Register" CssClass="alert-danger" Display="Dynamic" ValidationExpression="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" Text="*Invalid email Address"></asp:RegularExpressionValidator>
-                    <asp:TextBox ID="txtEmail" placeholder="Password" runat="server" class="form-control" TextMode="Email" ></asp:TextBox>
+                    <asp:TextBox ID="txtEmail" placeholder="Email" runat="server" class="form-control" TextMode="Email" ></asp:TextBox>
                     
                     <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ErrorMessage="RequiredFieldValidator" Text="*Please enter Password" ControlToValidate="txtPassword" CssClass="alert-danger" Display="Dynamic" ValidationGroup="Register"></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="rePassword" runat="server" ErrorMessage="RegularExpressionValidator" Text="*Password must be at least 6 characters and must contain a number(e.g Password1)" ControlToValidate="txtPassword" CssClass="alert-danger" Display="Dynamic" ValidationGroup="Register" ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"></asp:RegularExpressionValidator>

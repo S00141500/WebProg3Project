@@ -58,6 +58,15 @@ namespace FishingHotspots {
         protected global::System.Web.UI.WebControls.Button btnLogOut;
         
         /// <summary>
+        /// lblError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
+        
+        /// <summary>
         /// rfvUserName control.
         /// </summary>
         /// <remarks>
@@ -94,13 +103,13 @@ namespace FishingHotspots {
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
         
         /// <summary>
-        /// checKRemember control.
+        /// cbxRemember control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox checKRemember;
+        protected global::System.Web.UI.WebControls.CheckBox cbxRemember;
         
         /// <summary>
         /// btnSignIn control.

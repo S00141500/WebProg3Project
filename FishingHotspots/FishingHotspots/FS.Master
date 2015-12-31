@@ -14,83 +14,84 @@
 
 </head>
 <body>
-    
+
     <form id="form1" runat="server">
         <div class="navbar-wrapper">
-        <div class="navbar-inverse" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <a href="index.aspx">
-                        <img src="images/logo.png" alt="Realestate" /></a>
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+            <div class="navbar-inverse" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a href="index.aspx">
+                            <img src="images/logo.png" alt="Realestate" /></a>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
 
+                    </div>
+
+
+                    <!-- Nav Starts -->
+                    <div class="navbar-collapse collapse" id="navheader">
+                        <ul class="nav navbar-nav navbar-right" id="nav">
+                            <li runat="server"><a href="index.aspx">Home</a></li>
+                            <li runat="server"><a href="Reviews.aspx">Reviews</a></li>
+                            <li runat="server" id="liWrite" visible="false"><a href="Write a review.aspx">Write a Review</a></li>
+                            <li runat="server"><a href="News.aspx">News</a></li>
+                            <li>
+                                <asp:Button runat="server" ID="btnLogin" class="navButton" data-toggle="modal" data-target="#loginpop" Text="Login" /></li>
+                            <li>
+                                <asp:Button ID="btnLogOut" runat="server" class="navButton" Text="Logout" OnClick="btnLogOut_Click" /></li>
+                        </ul>
+
+                    </div>
+                    <!-- #Nav Ends -->
                 </div>
-
-
-                <!-- Nav Starts -->
-                <div class="navbar-collapse collapse" id="navheader">
-                    <ul class="nav navbar-nav navbar-right" id="nav">
-                        <li runat="server"><a href="index.aspx" >Home</a></li>
-                        <li runat="server"><a href="Reviews.aspx">Reviews</a></li>
-                        <li runat="server" id="liWrite"><a href="Write a review.aspx">Write a Review</a></li>
-                        <li runat="server"><a href="News.aspx">News</a></li>
-                        <li>
-                            <asp:Button runat="server" id="btnLogin" class="navButton" data-toggle="modal" data-target="#loginpop" Text="Login"/></li>
-                            <li><asp:Button ID="btnLogOut" runat="server" class="navButton" Text="Logout" OnClick="btnLogOut_Click" /></li>
-                    </ul>
-                    
-                </div>
-                <!-- #Nav Ends -->
             </div>
-        </div>
 
-    </div>
+        </div>
 
 
         <div id="loginpop" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="row">
-                    <div class="col-sm-6 login">
-                        <h4>Login</h4>
-                        
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="row">
+                        <div class="col-sm-6 login">
+                            <h4>Login</h4>
+                            <asp:Label runat="server" ID="lblError" CssClass="alert-danger" Display="Dynamic"></asp:Label>
                             <div class="form-group">
                                 <asp:RequiredFieldValidator ID="rfvUserName" runat="server" ErrorMessage="RequiredFieldValidator" ValidationGroup="Modal" Text="*Please enter username or email address" CssClass="alert-danger" ControlToValidate="txtUserName" Display="Dynamic"></asp:RequiredFieldValidator>
-                               <asp:TextBox ID="txtUserName" runat="server" class="form-control" placeholder="Username" ></asp:TextBox>
+                                <asp:TextBox ID="txtUserName" runat="server" class="form-control" placeholder="Username"></asp:TextBox>
                             </div>
                             <div class="form-group">
                                 <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ErrorMessage="RequiredFieldValidator" Text="*Please enter password" ValidationGroup="Modal" CssClass="alert-danger" ControlToValidate="txtPassword" Display="Dynamic"></asp:RequiredFieldValidator>
-                                <asp:TextBox ID="txtPassword" TextMode="Password" runat="server" class="form-control" placeholder="Password" ></asp:TextBox>
+                                <asp:TextBox ID="txtPassword" TextMode="Password" runat="server" class="form-control" placeholder="Password"></asp:TextBox>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <asp:CheckBox ID="checKRemember" runat="server" />
+                                    <asp:CheckBox ID="cbxRemember" runat="server" />
                                     Remember me
                                 </label>
                             </div>
 
-                        <asp:Button ID="btnSignIn" runat="server" Text="Sign In" class="btn btn-success" OnClick="btnSignIn_Click" ValidationGroup="Modal"/>
-                       
-                    </div>
-                    <div class="col-sm-6">
-                        <h4>New User Sign Up</h4>
-                        <p>Join today and rate reviews and wirite your own.</p>
-                        <asp:Button ID="btnJoin" runat="server" Text="Join Now" class="navButton" OnClick="btnJoin_Click" CausesValidation="false" />
-                    </div>
+                            <asp:Button ID="btnSignIn" runat="server" Text="Sign In" class="btn btn-success" OnClick="btnSignIn_Click" ValidationGroup="Modal" />
 
+                        </div>
+                        <div class="col-sm-6">
+                            <h4>New User Sign Up</h4>
+                            <p>Join today and rate reviews and write your own.</p>
+                            <asp:Button ID="btnJoin" runat="server" Text="Join Now" class="navButton" OnClick="btnJoin_Click" CausesValidation="false" />
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
     </form>
-    
+
     <div class="footer">
         <div class="container">
             <div class="row">
@@ -137,22 +138,24 @@
 
 
     <!-- Modal -->
-    
+
 </body>
-    <script>
-        $(document).ready(function () {
-            var str = location.href.toLowerCase();
-            $("#nav li a").each(function () {
-                if (str.indexOf($(this).attr("href").toLowerCase()) > -1) {
-                    $("li .active").removeClass("active");
-                    $(this).parent().addClass("active");
-                }
-            });
-            $("li .active").parents().each(function () {
-                if ($(this).is("li")) {
-                    $(this).addClass("active");
-                }
-            });
+<script>
+    $(document).ready(function () {
+        var str = location.href.toLowerCase();
+        $("#nav li a").each(function () {
+            if (str.indexOf($(this).attr("href").toLowerCase()) > -1) {
+                $("li .active").removeClass("active");
+                $(this).parent().addClass("active");
+            }
         });
-    </script>
+        $("li .active").parents().each(function () {
+            if ($(this).is("li")) {
+                $(this).addClass("active");
+            }
+        });
+    });
+
+</script>
+
 </html>
