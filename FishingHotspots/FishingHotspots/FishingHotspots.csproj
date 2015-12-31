@@ -99,6 +99,7 @@
     <Content Include="CSS\PageForms.css" />
     <Content Include="CSS\Register.css" />
     <Content Include="CSS\Reviews.css" />
+    <Content Include="global.asax" />
     <Content Include="images\about.jpg" />
     <Content Include="images\advertisements.jpg" />
     <Content Include="images\agents\1.jpg" />
@@ -156,6 +157,9 @@
     </Compile>
     <Compile Include="FS.Master.designer.cs">
       <DependentUpon>FS.Master</DependentUpon>
+    </Compile>
+    <Compile Include="global.asax.cs">
+      <DependentUpon>global.asax</DependentUpon>
     </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>

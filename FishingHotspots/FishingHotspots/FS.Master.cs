@@ -20,7 +20,9 @@ namespace FishingHotspots
         SqlCommand command = new SqlCommand();
         SqlDataReader queryResults;
 
-        public object ClientScript { get; private set; }
+        //declare delegate and event
+        public delegate void DelEventHandler(int i);
+        public event DelEventHandler MyEvent;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -60,6 +62,7 @@ namespace FishingHotspots
         }
         protected void btnSignIn_Click(object sender, EventArgs e)
         {
+             
             try
             {
                 conn.Open();
@@ -112,12 +115,18 @@ namespace FishingHotspots
                 }
                 else
                 {
-                    lblError.Text = string.Format("Invalid Login. Please Try Again");
+                    Application.Lock();
 
-                    if (IsPostBack)
-                    {
-                        Response.Write("<script>alert('Invalid Login. Please Try again');</script>");
-                    }
+                    int atts = Convert.ToInt32(Application["Attempts"]) + 1;
+                    Application["Attempts"] = atts;
+
+                    Application.UnLock();
+
+                    MyEvent += new DelEventHandler(attemptsMade);     //** Step 3 **//
+                    MyEvent += new DelEventHandler(attemptsLeft);
+
+                    MyEvent(atts);
+                    
                     queryResults.Close();
                 }
             }
@@ -141,8 +150,34 @@ namespace FishingHotspots
         protected void btnLogOut_Click(object sender, EventArgs e)
         {
             FormsAuthentication.SignOut();
+            Application.Lock();
+            Application["Attempts"] = 0;
+            Application.UnLock();
 
             Response.Redirect("Index.aspx");
         }
+        public void attemptsMade(int i)
+        {
+            if (IsPostBack)
+            {
+                if (!Page.ClientScript.IsStartupScriptRegistered("alert"))
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(),
+                        "alert", "alertMessage('" + i + "');", true);
+                }
+
+            }
+
+        }
+        public void attemptsLeft(int i)
+        {
+            if(3-i <= 0)
+            {
+                lblError.Text = string.Format("Invalid Login. Please Try Again. Maybe you should register");
+            }
+            else
+                lblError.Text = string.Format("Invalid Login. Please Try Again. {0} Attempts remaining", 3-i);
+        }
+
     }
 }
