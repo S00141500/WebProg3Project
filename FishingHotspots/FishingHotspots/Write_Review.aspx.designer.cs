@@ -31,6 +31,15 @@ namespace FishingHotspots {
         protected global::System.Web.UI.WebControls.TextBox txtTitle;
         
         /// <summary>
+        /// SqlDataSourceCounties control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceCounties;
+        
+        /// <summary>
         /// rfvCounties control.
         /// </summary>
         /// <remarks>
@@ -47,6 +56,15 @@ namespace FishingHotspots {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCounties;
+        
+        /// <summary>
+        /// ddlRiverOrLake control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlRiverOrLake;
         
         /// <summary>
         /// rfvRiverLake control.
@@ -85,6 +103,15 @@ namespace FishingHotspots {
         protected global::System.Web.UI.WebControls.DropDownList ddlType;
         
         /// <summary>
+        /// SqlDataCoarse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataCoarse;
+        
+        /// <summary>
         /// cbxCoarse control.
         /// </summary>
         /// <remarks>
@@ -92,6 +119,15 @@ namespace FishingHotspots {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList cbxCoarse;
+        
+        /// <summary>
+        /// SqlDataGame control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataGame;
         
         /// <summary>
         /// cbxGame control.

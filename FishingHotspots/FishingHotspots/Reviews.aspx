@@ -23,15 +23,14 @@
                         <h4><span class="glyphicon glyphicon-search"></span>Search for</h4>
                         <div class="row">
                             <div class="col-lg-7">
-                                <select class="form-control">
-                                    <option>Coarse</option>
-                                    <option>Game</option>
-                                </select>
+                                <asp:DropDownList ID="ddlFishType" runat="server" class="form-control" >                                    
+                                    <asp:ListItem>Coarse</asp:ListItem>
+                                    <asp:ListItem>Game</asp:ListItem>
+                                </asp:DropDownList> 
                             </div>
                             <div class="col-lg-7">
-                                <select class="form-control">
-                                    <option>Where</option>
-                                </select>
+                                <asp:DropDownList ID="ddlWhere" runat="server" class="form-control" >                                           
+                                </asp:DropDownList>  
                             </div>
                         </div>
 
