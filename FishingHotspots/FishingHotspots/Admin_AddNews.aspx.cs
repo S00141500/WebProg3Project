@@ -5,14 +5,30 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using PasswordHashTool;
+using System.Web.Configuration;
+using System.Data.SqlClient;
+using System.Data;
+using System.Web.Security;
 
 namespace FishingHotspots
 {
     public partial class Admin : System.Web.UI.Page
     {
+        static string connString = WebConfigurationManager.ConnectionStrings["FishingHotspotsDB"].ConnectionString;
+        SqlConnection conn = new SqlConnection(connString);
+        SqlCommand command = new SqlCommand();
+        SqlDataReader queryResults;
+
         private delegate string newsDel(bool b);
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.Cookies["myAuthCookie"] == null)
+                FormsAuthentication.RedirectToLoginPage();
+
+            else
+            {
+
+            }
 
 
         }
@@ -21,6 +37,9 @@ namespace FishingHotspots
         {
             if (IsValid)
             {
+                conn.Open();
+                command.Connection = conn;
+
                 try
                 {
                     byte[] image = new byte[] { };
@@ -28,12 +47,33 @@ namespace FishingHotspots
                     {
                         image = UploadImage();
                     }
+
+                    // get the users name
+                   string userName = HttpContext.Current.User.Identity.Name;
+                    //set the commandType to storedprocedure
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    //set the commandText to the name of our stored procedure
+                    command.CommandText = "[dbo].[AddNewsStory]";
+
+                    //provide values for the procedure's parameters
+                    command.Parameters.AddWithValue("@title", txtTitle.Text);
+                    command.Parameters.AddWithValue("@text",txtDescription.Text);
+                    command.Parameters.AddWithValue("@publishDate", DateTime.Now);
+                    command.Parameters.AddWithValue("@image", image);
+                    command.Parameters.AddWithValue("@username", userName);
+                    //execute the command
+                    command.ExecuteNonQuery();
                 }
                 catch
                 {
                     lblStatus.CssClass = "";
                     //lblStatus.Text = "<span class='glyphicon glyphicon-ok'></span>"+statusMsg;
                     lblStatus.Visible = true;
+                }
+                finally
+                {
+                    conn.Close();
                 }
 
             }

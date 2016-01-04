@@ -26,7 +26,7 @@
         </div>
 
         <div class="col-md-offset-1 col-md-10 ">
-
+             
             <!-- left column -->
             <div class="col-md-5 form-horizontal formStyle" >
                 <h3 class=" text-center h3-admin">Add Details</h3>
