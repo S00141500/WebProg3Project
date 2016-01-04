@@ -41,7 +41,7 @@
                         <ul class="nav navbar-nav navbar-right" id="nav">
                             <li runat="server"><a href="index.aspx">Home</a></li>
                             <li runat="server"><a href="Reviews.aspx">Reviews</a></li>
-                            <li runat="server" id="liWrite" visible="false"><a href="Write a review.aspx">Write a Review</a></li>
+                            <li runat="server" id="liWrite" visible="false"><a href="Write_Review.aspx">Write a Review</a></li>
                             <li runat="server"><a href="News.aspx">News</a></li>
                             <li>
                                 <asp:Button runat="server" ID="btnLogin" class="navButton" data-toggle="modal" data-target="#loginpop" Text="Login" /></li>

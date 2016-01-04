@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,7 @@ namespace FishingHotspots
         SqlCommand command = new SqlCommand();
         SqlDataReader ddlWhereValues;
 
+
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -27,6 +29,7 @@ namespace FishingHotspots
             }
 
             PopulateWhere();
+            
         }
 
         protected void btnFindReviews_Click(object sender, EventArgs e)
@@ -46,7 +49,7 @@ namespace FishingHotspots
             ddlWhereValues = command.ExecuteReader();
 
             ddlWhere.DataSource = ddlWhereValues;
-            ddlWhere.DataValueField = "County";
+            ddlWhere.DataValueField = "Id";
             ddlWhere.DataTextField = "County";
             ddlWhere.DataBind();
 

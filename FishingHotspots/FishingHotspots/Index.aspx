@@ -63,18 +63,18 @@
                     <div class="row">
                         <div class="col-lg-4 col-sm-3 ">
                             <asp:Label ID="lblWhere" runat="server" Text="Where?"></asp:Label>
-                            <asp:DropDownList ID="ddlWhere" runat="server" class="form-control" >                                           
-                                </asp:DropDownList>   
+                            <asp:DropDownList ID="ddlWhere" runat="server" class="form-control">
+                            </asp:DropDownList>
                         </div>
-                        <div class="col-lg-4 col-sm-4">  
+                        <div class="col-lg-4 col-sm-4">
                             <asp:Label ID="lblType" runat="server" Text="Coarse Or Game?"></asp:Label>
-                                <asp:DropDownList ID="ddlFishType" runat="server" class="form-control" >                                    
-                                    <asp:ListItem>Coarse</asp:ListItem>
-                                    <asp:ListItem>Game</asp:ListItem>
-                                </asp:DropDownList>                            
+                            <asp:DropDownList ID="ddlFishType" runat="server" class="form-control">
+                                <asp:ListItem Value="1">Coarse</asp:ListItem>
+                                <asp:ListItem Value="2">Game</asp:ListItem>
+                            </asp:DropDownList>
                         </div>
                         <div class="col-lg-3 col-sm-4" id="btnFind">
-                            <asp:Button ID="btnFindReviews" OnClick="btnFindReviews_Click" runat="server" Text="Find Now" class="btn btn-success" />                
+                            <asp:Button ID="btnFindReviews" OnClick="btnFindReviews_Click" runat="server" Text="Find Now" class="btn btn-success" />
                         </div>
                     </div>
                 </div>
@@ -86,61 +86,49 @@
         </div>
     </div>
     <div class="container">
-     <!-- About us -->
-    <div class="spacer">
-        <div class="row">
-            <div class="col-lg-6 col-sm-9 recent-view">
-                <h3>About Us</h3>
-                <p>Fishing hotspots was started in Sligo Institute of Technology by four software development students. We all have a passion for fishing and believe that fishinghotspots will create a community for Irish anglers to share their fishing experiences</p>
-                    
+        <!-- About us -->
+        <div class="spacer">
+            <div class="row">
+                <div class="col-lg-6 col-sm-9 recent-view">
+                    <h3>About Us</h3>
+                    <p>Fishing hotspots was started in Sligo Institute of Technology by four software development students. We all have a passion for fishing and believe that fishinghotspots will create a community for Irish anglers to share their fishing experiences</p>
+                </div>
 
-            </div>
-            <div class="col-lg-5 col-lg-offset-1 col-sm-3 recommended">
-                <h3>Recommended Reviews</h3>
-                <div id="myCarousel" class="carousel slide">
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
-                        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
-                        <li data-target="#myCarousel" data-slide-to="3" class=""></li>
-                    </ol>
-
-                    <asp:SqlDataSource ID="SqlDataSourceTopRated" runat="server" ConnectionString="<%$ ConnectionStrings:FishingHotspotsDB %>" SelectCommand="TopRated" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
-                        <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSourceTopRated">
-                            <ItemTemplate>
-                                <div runat="server">
-                                    <div class="col-lg-4">
-                                        <img src="<%#:Eval("Photo")%>" class="img-responsive" alt="review" /></a>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <h5><strong><%#:Eval("Title")%></strong></h5>
-                                        <p class="price"><b>Rating:</b> <%# Eval("averageRating")%> out of 5</p>
-                                        <p class="price"><%# Eval("ReviewDate","{0:MMM dd, yyyy}")%></p>
-                                    </div>
-                                </div>
-                            </ItemTemplate>
-                            <LayoutTemplate>
-                                <div class="carousel-inner" runat="server">
-                                    <div class="item active">
-                                        <div class="item">
-                                            <div class="row">
-                                                <div id="ItemPlaceholder" runat="server">
-                                                </div>
-                                            </div>
+                <asp:SqlDataSource ID="SqlDataSourceTopRated" runat="server" ConnectionString="<%$ ConnectionStrings:FishingHotspotsDB %>" SelectCommand="TopRatedIndex" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSourceTopRated">
+                    <ItemTemplate>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <a href="ReviewDetails?id=<%# Eval("reviewId") %>"><asp:Image ID="reviewImage" runat="server" ImageUrl='<%#Eval("Photo") %>' class="img-responsive" alt="review" /><a>
+                            </div>
+                            <div class="col-lg-8">
+                                <h5><strong><%#:Eval("Title")%></strong></h5>
+                                <p class="price"><b>Rating:</b> <%# Eval("averageRating")%> out of 5</p>
+                                <p class="price"><%# Eval("ReviewDate","{0:MMM dd, yyyy}")%></p>
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                    <LayoutTemplate>
+                        <div class="col-lg-5 col-lg-offset-1 col-sm-3 recommended">
+                            <h3>Recommended Review</h3>
+                            <div id="myCarousel" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="item active" runat="server">
+                                        <div id="ItemPlaceholder" runat="server">
                                         </div>
                                     </div>
                                 </div>
-                            </LayoutTemplate>
-                        </asp:ListView>
-                   
-                    </div>
-                </div>
+                            </div>
+                        </div>
+                    </LayoutTemplate>
+                </asp:ListView>
+
             </div>
         </div>
     </div>
 
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-     <!-- /sl-slider -->
+    <!-- /sl-slider -->
     <script type="text/javascript" src="assets/slitslider/js/modernizr.custom.79639.js"></script>
     <script type="text/javascript" src="assets/slitslider/js/jquery.ba-cond.min.js"></script>
     <script type="text/javascript" src="assets/slitslider/js/jquery.slitslider.js"></script>
