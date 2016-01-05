@@ -40,6 +40,33 @@ namespace FishingHotspots {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl liWrite;
         
         /// <summary>
+        /// btnAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl btnAdmin;
+        
+        /// <summary>
+        /// btnAddNews control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnAddNews;
+        
+        /// <summary>
+        /// btnUpdateDelete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor btnUpdateDelete;
+        
+        /// <summary>
         /// btnLogin control.
         /// </summary>
         /// <remarks>

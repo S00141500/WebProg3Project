@@ -72,8 +72,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Admin_AddNews.aspx" />
-    <Content Include="Admin_Update_Delete.aspx" />
+    <Content Include="Admin\Admin_AddNews.aspx" />
+    <Content Include="Admin\Admin_Update_Delete.aspx" />
     <Content Include="App_Data\FishingHotspotsDB.ldf">
       <DependentUpon>FishingHotspotsDB.mdf</DependentUpon>
     </Content>
@@ -137,18 +137,18 @@
     <Content Include="Write_Review.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin_AddNews.aspx.cs">
+    <Compile Include="Admin\Admin_AddNews.aspx.cs">
       <DependentUpon>Admin_AddNews.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin_AddNews.aspx.designer.cs">
+    <Compile Include="Admin\Admin_AddNews.aspx.designer.cs">
       <DependentUpon>Admin_AddNews.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin_Update_Delete.aspx.cs">
+    <Compile Include="Admin\Admin_Update_Delete.aspx.cs">
       <DependentUpon>Admin_Update_Delete.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin_Update_Delete.aspx.designer.cs">
+    <Compile Include="Admin\Admin_Update_Delete.aspx.designer.cs">
       <DependentUpon>Admin_Update_Delete.aspx</DependentUpon>
     </Compile>
     <Compile Include="FS.Master.cs">
@@ -201,6 +201,7 @@
     <Content Include="assets\fonts\din.woff" />
     <Content Include="assets\owl-carousel\.DS_Store" />
     <Content Include="packages.config" />
+    <Content Include="Admin\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -10,6 +10,8 @@ using System.Web.Configuration;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
+using System.Security.Principal;
 
 namespace FishingHotspots
 {
@@ -18,7 +20,6 @@ namespace FishingHotspots
         static string connString = WebConfigurationManager.ConnectionStrings["FishingHotspotsDB"].ConnectionString;
         SqlConnection conn = new SqlConnection(connString);
         SqlCommand command = new SqlCommand();
-        SqlDataReader queryResults;
 
         //declare delegate and event
         public delegate void DelEventHandler(int i);
@@ -38,6 +39,22 @@ namespace FishingHotspots
                     btnLogin.Visible = false;
                     btnLogOut.Visible = true;
                     liWrite.Visible = true;
+
+                    if (HttpContext.Current.User.Identity.IsAuthenticated)
+                    {
+
+                        if (HttpContext.Current.User.Identity is FormsIdentity)
+                        {
+                            FormsIdentity id = (FormsIdentity)HttpContext.Current.User.Identity;
+                            FormsAuthenticationTicket ticket = id.Ticket;
+                            string userData = ticket.UserData;
+
+                            if (userData == "Administrator")
+                            {
+                                btnAdmin.Visible = true;
+                            }
+                        }
+                    }
                 }
             }
 
@@ -62,7 +79,7 @@ namespace FishingHotspots
         }
         protected void btnSignIn_Click(object sender, EventArgs e)
         {
-             
+
             try
             {
                 conn.Open();
@@ -77,41 +94,53 @@ namespace FishingHotspots
                 command.Parameters.AddWithValue("@Username", txtUserName.Text);
                 command.Parameters.AddWithValue("@PasswordHash", GetMd5Hash(txtPassword.Text));
                 //execute the command
-                queryResults = command.ExecuteReader();
 
-                if (queryResults.Read())
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
                 {
-                    queryResults.Close();
+                    //reader.Read();
+                    // int userId = Convert.ToInt32(reader["UserId"]);
+                    // string roles = reader["Roles"].ToString();
+                    string roles = reader.GetSqlValue(6).ToString();
+
+                    reader.Close();
 
                     HttpCookie S00140633 = new HttpCookie("LoggedIn");
 
-                    //creates an autorization cookie which lasts a month
+                    Response.Cookies.Clear();
+
+                    // Set the new expiry date - to thirty days from now
+                    DateTime expiryDate;
+
                     if (cbxRemember.Checked)
                     {
-                        Response.Cookies.Clear();
-
-                        // Set the new expiry date - to thirty days from now
-                        DateTime expiryDate = DateTime.Now.AddDays(30);
-
-                        // Create a new forms auth ticket
-                        FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(2, txtUserName.Text, DateTime.Now, expiryDate, true, String.Empty);
-
-                        // Encrypt the ticket
-                        string encryptedTicket = FormsAuthentication.Encrypt(ticket);
-
-                        // Create a new authentication cookie - and set its expiration date
-                        HttpCookie authenticationCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-                        authenticationCookie.Expires = ticket.Expiration;
-
-                        // Add the cookie to the response.
-                        Response.Cookies.Add(authenticationCookie);
-
-                        Response.Redirect("Index.aspx");
+                        //creates an autorization cookie which lasts a month
+                        expiryDate = DateTime.Now.AddDays(30);
                     }
                     else
                     {
-                        FormsAuthentication.RedirectFromLoginPage(txtUserName.Text, true);
+                        //creates an autorization cookie which lasts a month
+                        expiryDate = DateTime.Now.AddHours(1);
+                        // FormsAuthentication.RedirectFromLoginPage(txtUserName.Text, true);
                     }
+
+                    // Create a new forms auth ticket
+                    FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(2, txtUserName.Text, DateTime.Now, expiryDate, true, roles);
+
+                    // Encrypt the ticket
+                    string encryptedTicket = FormsAuthentication.Encrypt(ticket);
+
+                    // Create a new authentication cookie - and set its expiration date
+                    HttpCookie authenticationCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                    authenticationCookie.Expires = ticket.Expiration;
+
+                    // Add the cookie to the response.
+                    Response.Cookies.Add(authenticationCookie);
+
+                    HttpContext.Current.ApplicationInstance.CompleteRequest();
+                    Response.Redirect("Index.aspx",false);
+
                 }
                 else
                 {
@@ -126,8 +155,8 @@ namespace FishingHotspots
                     MyEvent += new DelEventHandler(attemptsLeft);
 
                     MyEvent(atts);
-                    
-                    queryResults.Close();
+
+                    reader.Close();
                 }
             }
             catch (Exception ex)
@@ -144,7 +173,7 @@ namespace FishingHotspots
 
         protected void btnJoin_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Register.aspx");
+            Response.Redirect("~/Register.aspx");
         }
 
         protected void btnLogOut_Click(object sender, EventArgs e)
@@ -171,12 +200,12 @@ namespace FishingHotspots
         }
         public void attemptsLeft(int i)
         {
-            if(3-i <= 0)
+            if (3 - i <= 0)
             {
                 lblError.Text = string.Format("Invalid Login. Please Try Again. Maybe you should register");
             }
             else
-                lblError.Text = string.Format("Invalid Login. Please Try Again. {0} Attempts remaining", 3-i);
+                lblError.Text = string.Format("Invalid Login. Please Try Again. {0} Attempts remaining", 3 - i);
         }
 
     }

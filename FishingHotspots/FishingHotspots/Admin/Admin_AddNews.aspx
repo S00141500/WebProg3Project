@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FS.Master" AutoEventWireup="true" CodeBehind="Admin_AddNews.aspx.cs" Inherits="FishingHotspots.Admin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../FS.Master" AutoEventWireup="true" CodeBehind="Admin_AddNews.aspx.cs" Inherits="FishingHotspots.Admin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Add News | Admin</title>
-    <link href="CSS/Register.css" rel="stylesheet" />
+    <link href="../CSS/Register.css" rel="stylesheet" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script>
         $(document).ready(function () {

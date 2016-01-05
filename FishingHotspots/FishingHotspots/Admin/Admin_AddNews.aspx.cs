@@ -22,13 +22,13 @@ namespace FishingHotspots
         private delegate string newsDel(bool b);
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.Cookies["myAuthCookie"] == null)
-                FormsAuthentication.RedirectToLoginPage();
+            //if (Request.Cookies["myAuthCookie"] == null)
+            //    FormsAuthentication.RedirectToLoginPage();
 
-            else
-            {
+            //else
+            //{
 
-            }
+            //}
 
 
         }

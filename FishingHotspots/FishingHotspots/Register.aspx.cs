@@ -74,7 +74,7 @@ namespace FishingHotspots
                     command.Parameters.AddWithValue("@LastName", txtLastName.Text);
                     command.Parameters.AddWithValue("@Username", txtUserName.Text);
                     command.Parameters.AddWithValue("@Email", txtEmail.Text);
-                    command.Parameters.AddWithValue("@userId", GetMd5Hash(txtPassword.Text));
+                    command.Parameters.AddWithValue("@PasswordHash", GetMd5Hash(txtPassword.Text));
                     //execute the command
                     command.ExecuteNonQuery();
 

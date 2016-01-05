@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="CSS/master.css" />
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript">
         function alertMessage(AttemptsNo) {
             alert('Invalid Login Please Try again ' + AttemptsNo + 'Attempts');
@@ -25,7 +25,7 @@
                 <div class="container">
                     <div class="navbar-header">
                         <a href="index.aspx">
-                            <img src="images/logo.png" alt="Realestate" /></a>
+                            <img src="<%=ResolveClientUrl("Images/logo.png")%>" <%--"images/logo.png"--%> alt="Realestate" /></a>
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
@@ -39,10 +39,27 @@
                     <!-- Nav Starts -->
                     <div class="navbar-collapse collapse" id="navheader">
                         <ul class="nav navbar-nav navbar-right" id="nav">
-                            <li runat="server"><a href="index.aspx">Home</a></li>
-                            <li runat="server"><a href="Reviews.aspx">Reviews</a></li>
-                            <li runat="server" id="liWrite" visible="false"><a href="Write a review.aspx">Write a Review</a></li>
-                            <li runat="server"><a href="News.aspx">News</a></li>
+                            <li runat="server"><a href="../index.aspx">Home</a></li>
+                            <li runat="server"><a href="../Reviews.aspx">Reviews</a></li>
+                            <li runat="server" id="liWrite" visible="false"><a href="../Write_Review.aspx">Write a Review</a></li>
+                            <li runat="server"><a href="..News.aspx">News</a></li>  
+                            <%-- <li runat="server" id="li1" visible="false"><a href="Write a review.aspx">Add News (Admin)</a></li>
+
+                            <li runat="server" id="li2" visible="false"><a href="Write a review.aspx">Add/Update/Delete (Admin)</a></li>--%>
+                            <%-- <li>
+                                <asp:DropDownList ID="dpAdmin" runat="server" Visible="false">
+                                    <asp:ListItem>Add News Story</asp:ListItem>
+                                    <asp:ListItem>Update\Delete</asp:ListItem>
+                                </asp:DropDownList
+                            </li>--%>
+
+                            <li id="btnAdmin" runat="server" class="dropdown" visible="false">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a id="btnAddNews" runat="server" href="~/Admin/Admin_AddNews.aspx">Add News Story</a></li>
+                                    <li><a id="btnUpdateDelete" runat="server" href="~/Admin/Admin_Update_Delete.aspx">Update\Delete</a></li>
+                                </ul>
+                            </li>
                             <li>
                                 <asp:Button runat="server" ID="btnLogin" class="navButton" data-toggle="modal" data-target="#loginpop" Text="Login" /></li>
                             <li>
@@ -79,7 +96,7 @@
                                 </label>
                             </div>
 
-                            <asp:Button ID="btnSignIn" runat="server" Text="Sign In" class="btn btn-success" OnClick="btnSignIn_Click" ValidationGroup="Modal" />
+                            <asp:Button ID="btnSignIn" runat="server" Text="Sign In" class="btn btn-success" OnClick="btnSignIn_Click" OnAuthenticate="ValidateUser" ValidationGroup="Modal" />
 
                         </div>
                         <div class="col-sm-6">
@@ -112,13 +129,13 @@
                 <div class="col-lg-4 col-sm-4">
                     <h4>Follow us</h4>
                     <a href="#">
-                        <img src="images/facebook.png" alt="facebook" /></a>
+                        <img src= "<%=ResolveClientUrl("images/facebook.png")%>"  alt="facebook" /></a>
                     <a href="#">
-                        <img src="images/twitter.png" alt="twitter" /></a>
+                        <img src="<%=ResolveClientUrl("images/twitter.png")%>" alt="twitter" /></a>
                     <a href="#">
-                        <img src="images/linkedin.png" alt="linkedin" /></a>
+                        <img src="<%=ResolveClientUrl("images/linkedin.png")%>" alt="linkedin" /></a>
                     <a href="#">
-                        <img src="images/instagram.png" alt="instagram" /></a>
+                        <img src="<%=ResolveClientUrl("images/instagram.png")%>" alt="instagram" /></a>
                 </div>
 
                 <div class="col-lg-4 col-sm-4">
@@ -127,7 +144,7 @@
                         <b>Fishing Hotspots Ltd.</b><br />
                         <span class="glyphicon glyphicon-map-marker"></span>Sligo Institute of Technology, Ash Lane, Sligo
                         <br />
-                        <span class="glyphicon glyphicon-envelope"></span>hello@fishinghotspots.com<br>
+                        <span class="glyphicon glyphicon-envelope"></span>hello@fishinghotspots.com<br/>
                         <span class="glyphicon glyphicon-earphone"></span>(123) 456-7890
                     </p>
                 </div>
@@ -159,10 +176,10 @@
             }
         });
 
-        
+
     });
 
-        
+
 
 
 </script>
