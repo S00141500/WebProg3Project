@@ -2,12 +2,12 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Update & Delete | Admin</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" href="CSS/master.css" />
-    <link rel="stylesheet" href="CSS/PageForms.css" />
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="../CSS/master.css" />
+    <link rel="stylesheet" href="../CSS/PageForms.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.js"></script>
-    <link href="CSS/PageForms.css" type="text/css" rel="stylesheet" />
+    <script src="../assets/bootstrap/js/bootstrap.js"></script>
+    <link href="../CSS/PageForms.css" type="text/css" rel="stylesheet" />
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

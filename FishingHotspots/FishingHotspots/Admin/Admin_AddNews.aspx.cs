@@ -65,7 +65,7 @@ namespace FishingHotspots
                     //execute the command
                     command.ExecuteNonQuery();
                 }
-                catch
+                catch (Exception ex)
                 {
                     lblStatus.CssClass = "";
                     //lblStatus.Text = "<span class='glyphicon glyphicon-ok'></span>"+statusMsg;
