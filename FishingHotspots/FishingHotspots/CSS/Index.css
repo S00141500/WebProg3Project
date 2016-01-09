@@ -23,6 +23,9 @@ select,input[type="text"]
     margin-top:21px;
 
 }
+h5{
+    font-weight:bolder;
+}
 .spacer{margin-top: 40px;margin-bottom:40px;}
 .recommended{position: relative;}
 .recommended .carousel-indicators{position: absolute;text-align: left;left: 0;bottom: -40px;margin: 0;}

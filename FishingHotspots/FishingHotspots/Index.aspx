@@ -18,48 +18,21 @@
                 <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
                     <div class="sl-slide-inner">
                         <div class="bg-img bg-img-1"></div>
-                        <h2><a href="#">Find Ireland's Best Fishing Areas</a></h2>
-                        <blockquote>
-                            <p class="location"><span class="glyphicon glyphicon-map-marker"></span>1890 Syndey, Australia</p>
-                            <p>Until he extends the circle of his compassion to all living things, man will not himself find peace.</p>
-                            <cite>$ 20,000,000</cite>
-                        </blockquote>
-                    </div>
-                </div>
-
-                <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
-                    <div class="sl-slide-inner">
-                        <div class="bg-img bg-img-2"></div>
-                        <h2><a href="#">2 Bed Rooms and 1 Dinning Room Aparment on Sale</a></h2>
-                        <blockquote>
-                            <p class="location"><span class="glyphicon glyphicon-map-marker"></span>1890 Syndey, Australia</p>
-                            <p>Until he extends the circle of his compassion to all living things, man will not himself find peace.</p>
-                            <cite>$ 20,000,000</cite>
-                        </blockquote>
+                        <h2>Find Ireland's Best Fishing Hotspots</h2>
                     </div>
                 </div>
 
                 <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
                     <div class="sl-slide-inner">
-                        <div class="bg-img bg-img-3"></div>
-                        <h2><a href="#">2 Bed Rooms and 1 Dinning Room Aparment on Sale</a></h2>
-                        <blockquote>
-                            <p class="location"><span class="glyphicon glyphicon-map-marker"></span>1890 Syndey, Australia</p>
-                            <p>Until he extends the circle of his compassion to all living things, man will not himself find peace.</p>
-                            <cite>$ 20,000,000</cite>
-                        </blockquote>
+                        <div class="bg-img bg-img-2"></div>
+                        <h2>Read and Rate Reviews</h2>
                     </div>
                 </div>
 
                 <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="-5" data-slice2-rotation="25" data-slice1-scale="2" data-slice2-scale="1">
                     <div class="sl-slide-inner">
-                        <div class="bg-img bg-img-4"></div>
-                        <h2><a href="#">2 Bed Rooms and 1 Dinning Room Aparment on Sale</a></h2>
-                        <blockquote>
-                            <p class="location"><span class="glyphicon glyphicon-map-marker"></span>1890 Syndey, Australia</p>
-                            <p>Until he extends the circle of his compassion to all living things, man will not himself find peace.</p>
-                            <cite>$ 20,000,000</cite>
-                        </blockquote>
+                        <div class="bg-img bg-img-3"></div>
+                        <h2>Read All the Latest Fishing News</h2>
                     </div>
                 </div>
 
@@ -72,10 +45,7 @@
                 <span class="nav-dot-current"></span>
                 <span></span>
                 <span></span>
-                <span></span>
-                <span></span>
             </nav>
-
         </div>
         <!-- /slider-wrapper -->
     </div>
@@ -93,101 +63,72 @@
                     <div class="row">
                         <div class="col-lg-4 col-sm-3 ">
                             <asp:Label ID="lblWhere" runat="server" Text="Where?"></asp:Label>
-                            <asp:DropDownList ID="ddlWhere" runat="server" class="form-control" >                                           
-                                </asp:DropDownList>   
+                            <asp:DropDownList ID="ddlWhere" runat="server" class="form-control">
+                            </asp:DropDownList>
                         </div>
-                        <div class="col-lg-4 col-sm-4">  
+                        <div class="col-lg-4 col-sm-4">
                             <asp:Label ID="lblType" runat="server" Text="Coarse Or Game?"></asp:Label>
-                                <asp:DropDownList ID="ddlFishType" runat="server" class="form-control" >                                    
-                                    <asp:ListItem>Coarse</asp:ListItem>
-                                    <asp:ListItem>Game</asp:ListItem>
-                                </asp:DropDownList>                            
+                            <asp:DropDownList ID="ddlFishType" runat="server" class="form-control">
+                                <asp:ListItem Value="1">Coarse</asp:ListItem>
+                                <asp:ListItem Value="2">Game</asp:ListItem>
+                            </asp:DropDownList>
                         </div>
                         <div class="col-lg-3 col-sm-4" id="btnFind">
-                            <asp:Button ID="btnFindReviews" OnClick="btnFindReviews_Click" runat="server" Text="Find Now" class="btn btn-success" />                
+                            <asp:Button ID="btnFindReviews" OnClick="btnFindReviews_Click" runat="server" Text="Find Now" class="btn btn-success" />
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-lg-offset-2 col-sm-6 " id="loginPointer">
-                <p>Join now to write and rate reviews.</p>
-                <button class="btn btn-info" data-toggle="modal" data-target="#loginpop">Login</button>
+                <asp:Label runat="server" ID="txtCentreLogin">Join now to write and rate reviews.</asp:Label><br />
+                <asp:Button ID="btnloginCentre" class="btn btn-info" data-toggle="modal" data-target="#loginpop" runat="server" Text="Login" />
             </div>
         </div>
     </div>
     <div class="container">
-     <!-- About us -->
-    <div class="spacer">
-        <div class="row">
-            <div class="col-lg-6 col-sm-9 recent-view">
-                <h3>About Us</h3>
-                <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.<br>
-                    <a href="about.php">Learn More</a></p>
-
-            </div>
-            <div class="col-lg-5 col-lg-offset-1 col-sm-3 recommended">
-                <h3>Recommended Properties</h3>
-                <div id="myCarousel" class="carousel slide">
-                    <ol class="carousel-indicators">
-                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
-                        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
-                        <li data-target="#myCarousel" data-slide-to="3" class=""></li>
-                    </ol>
-                    <!-- Carousel items -->
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <img src="images/properties/1.jpg" class="img-responsive" alt="properties" /></div>
-                                <div class="col-lg-8">
-                                    <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-                                    <p class="price">$300,000</p>
-                                    <a href="property-detail.php" class="more">More Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <img src="images/properties/2.jpg" class="img-responsive" alt="properties" /></div>
-                                <div class="col-lg-8">
-                                    <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-                                    <p class="price">$300,000</p>
-                                    <a href="property-detail.php" class="more">More Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <img src="images/properties/3.jpg" class="img-responsive" alt="properties" /></div>
-                                <div class="col-lg-8">
-                                    <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-                                    <p class="price">$300,000</p>
-                                    <a href="property-detail.php" class="more">More Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <img src="images/properties/4.jpg" class="img-responsive" alt="properties" /></div>
-                                <div class="col-lg-8">
-                                    <h5><a href="property-detail.php">Integer sed porta quam</a></h5>
-                                    <p class="price">$300,000</p>
-                                    <a href="property-detail.php" class="more">More Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- About us -->
+        <div class="spacer">
+            <div class="row">
+                <div class="col-lg-6 col-sm-9 recent-view">
+                    <h3>About Us</h3>
+                    <p>Fishing hotspots was started in Sligo Institute of Technology by four software development students. We all have a passion for fishing and believe that fishinghotspots will create a community for Irish anglers to share their fishing experiences</p>
                 </div>
+
+                <asp:SqlDataSource ID="SqlDataSourceTopRated" runat="server" ConnectionString="<%$ ConnectionStrings:FishingHotspotsDB %>" SelectCommand="TopRatedIndex" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSourceTopRated">
+                    <ItemTemplate>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <a href="ReviewDetails?id=<%# Eval("reviewId") %>"><asp:Image ID="reviewImage" runat="server" ImageUrl='<%#Eval("Photo") %>' class="img-responsive" alt="review" /><a>
+                            </div>
+                            <div class="col-lg-8">
+                                <h5><strong><%#:Eval("Title")%></strong></h5>
+                                <p class="price"><b>Rating:</b> <%# Eval("averageRating")%> out of 5</p>
+                                <p class="price"><%# Eval("ReviewDate","{0:MMM dd, yyyy}")%></p>
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                    <LayoutTemplate>
+                        <div class="col-lg-5 col-lg-offset-1 col-sm-3 recommended">
+                            <h3>Recommended Review</h3>
+                            <div id="myCarousel" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="item active" runat="server">
+                                        <div id="ItemPlaceholder" runat="server">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </LayoutTemplate>
+                </asp:ListView>
+
             </div>
         </div>
     </div>
- </div>
+
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-     <!-- /sl-slider -->
+    <!-- /sl-slider -->
     <script type="text/javascript" src="assets/slitslider/js/modernizr.custom.79639.js"></script>
     <script type="text/javascript" src="assets/slitslider/js/jquery.ba-cond.min.js"></script>
     <script type="text/javascript" src="assets/slitslider/js/jquery.slitslider.js"></script>

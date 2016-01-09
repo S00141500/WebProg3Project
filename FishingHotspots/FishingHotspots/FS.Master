@@ -39,6 +39,7 @@
                     <!-- Nav Starts -->
                     <div class="navbar-collapse collapse" id="navheader">
                         <ul class="nav navbar-nav navbar-right" id="nav">
+<<<<<<< HEAD
                             <li runat="server"><a href="../index.aspx">Home</a></li>
                             <li runat="server"><a href="../Reviews.aspx">Reviews</a></li>
                             <li runat="server" id="liWrite" visible="false"><a href="../Write_Review.aspx">Write a Review</a></li>
@@ -60,6 +61,12 @@
                                     <li><a id="btnUpdateDelete" runat="server" href="~/Admin/Admin_Update_Delete.aspx">Update\Delete</a></li>
                                 </ul>
                             </li>
+=======
+                            <li runat="server"><a href="index.aspx">Home</a></li>
+                            <li runat="server"><a href="Reviews.aspx">Reviews</a></li>
+                            <li runat="server" id="liWrite" visible="false"><a href="Write_Review.aspx">Write a Review</a></li>
+                            <li runat="server"><a href="News.aspx">News</a></li>
+>>>>>>> francis
                             <li>
                                 <asp:Button runat="server" ID="btnLogin" class="navButton" data-toggle="modal" data-target="#loginpop" Text="Login" /></li>
                             <li>
