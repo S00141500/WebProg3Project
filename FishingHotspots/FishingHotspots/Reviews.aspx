@@ -124,9 +124,6 @@
                             </div>
                         </div>
                         <!-- properties -->
-
-                        
-
                     </div>
                 </div>
             </div>
