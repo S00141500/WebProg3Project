@@ -50,7 +50,7 @@ namespace FishingHotspots
                     //provide values for the procedure's parameters
                     command.Parameters.AddWithValue("@Title", txtTitle.Text);
                     command.Parameters.AddWithValue("@Photo", Path);
-                    command.Parameters.AddWithValue("@UserId", 1);
+                    command.Parameters.AddWithValue("@Username", HttpContext.Current.User.Identity.Name);
                     if(ddlType.SelectedIndex == 0)
                     {
                         command.Parameters.AddWithValue("@FishingType", 1);

@@ -39,11 +39,10 @@
                     <!-- Nav Starts -->
                     <div class="navbar-collapse collapse" id="navheader">
                         <ul class="nav navbar-nav navbar-right" id="nav">
-<<<<<<< HEAD
                             <li runat="server"><a href="../index.aspx">Home</a></li>
                             <li runat="server"><a href="../Reviews.aspx">Reviews</a></li>
                             <li runat="server" id="liWrite" visible="false"><a href="../Write_Review.aspx">Write a Review</a></li>
-                            <li runat="server"><a href="..News.aspx">News</a></li>  
+                            <li runat="server"><a href="../News.aspx">News</a></li>  
                             <%-- <li runat="server" id="li1" visible="false"><a href="Write a review.aspx">Add News (Admin)</a></li>
 
                             <li runat="server" id="li2" visible="false"><a href="Write a review.aspx">Add/Update/Delete (Admin)</a></li>--%>
@@ -61,12 +60,6 @@
                                     <li><a id="btnUpdateDelete" runat="server" href="~/Admin/Admin_Update_Delete.aspx">Update\Delete</a></li>
                                 </ul>
                             </li>
-=======
-                            <li runat="server"><a href="index.aspx">Home</a></li>
-                            <li runat="server"><a href="Reviews.aspx">Reviews</a></li>
-                            <li runat="server" id="liWrite" visible="false"><a href="Write_Review.aspx">Write a Review</a></li>
-                            <li runat="server"><a href="News.aspx">News</a></li>
->>>>>>> francis
                             <li>
                                 <asp:Button runat="server" ID="btnLogin" class="navButton" data-toggle="modal" data-target="#loginpop" Text="Login" /></li>
                             <li>
@@ -171,8 +164,9 @@
 <script>
     $(document).ready(function () {
         var str = location.href.toLowerCase();
+        
         $("#nav li a").each(function () {
-            if (str.indexOf($(this).attr("href").toLowerCase()) > -1) {
+            if (str.indexOf($(this).attr("href").slice(3).toLowerCase()) > -1) {
                 $("li .active").removeClass("active");
                 $(this).parent().addClass("active");
             }

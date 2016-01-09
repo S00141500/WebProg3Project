@@ -43,18 +43,18 @@
                         <asp:ListItem Value="1">Game</asp:ListItem>
                     </asp:DropDownList>
 
-                    <asp:SqlDataSource ID="SqlDataCoarse" runat="server" ConnectionString="<%$ ConnectionStrings:FishingHotspotsDB %>" SelectCommand="SELECT * FROM [FishSpeciesTbl] WHERE ([Type] = @Type)">
+                    <asp:SqlDataSource ID="SqlDataCoarse" runat="server" ConnectionString="<%$ ConnectionStrings:FishingHotspotsDB %>" SelectCommand="SELECT * FROM [FishSpeciesTbl] WHERE ([FishType] = @FishType)">
                         <SelectParameters>
-                            <asp:Parameter DefaultValue="1" Name="Type" Type="Byte" />
+                            <asp:Parameter DefaultValue="1" Name="FishType" Type="Byte" />
                         </SelectParameters>
                     </asp:SqlDataSource>
                     <div id="Coarsediv">
                         <asp:CheckBoxList ID="cbxCoarse" runat="server" CssClass="checkboxDisplay" DataSourceID="SqlDataCoarse" DataTextField="Name" DataValueField="Id" RepeatDirection="Horizontal" RepeatColumns="4" TextAlign="Right" CellPadding="10">
                         </asp:CheckBoxList>
                     </div>
-                    <asp:SqlDataSource ID="SqlDataGame" runat="server" ConnectionString="<%$ ConnectionStrings:FishingHotspotsDB %>" SelectCommand="SELECT * FROM [FishSpeciesTbl] WHERE ([Type] = @Type)">
+                    <asp:SqlDataSource ID="SqlDataGame" runat="server" ConnectionString="<%$ ConnectionStrings:FishingHotspotsDB %>" SelectCommand="SELECT * FROM [FishSpeciesTbl] WHERE ([FishType] = @FishType)">
                         <SelectParameters>
-                            <asp:Parameter DefaultValue="2" Name="Type" Type="Byte" />
+                            <asp:Parameter DefaultValue="2" Name="FishType" Type="Byte" />
                         </SelectParameters>
                     </asp:SqlDataSource>
                     <div id="Gamediv" hidden="">
