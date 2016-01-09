@@ -42,14 +42,14 @@ namespace FishingHotspots
 
                 try
                 {
-                    byte[] image = new byte[] { };
+                    string image = "";
                     if (ImgUpload.PostedFile != null)
                     {
                         image = UploadImage();
                     }
 
                     // get the users name
-                   string userName = HttpContext.Current.User.Identity.Name;
+                    string userName = HttpContext.Current.User.Identity.Name;
                     //set the commandType to storedprocedure
                     command.CommandType = CommandType.StoredProcedure;
 
@@ -58,7 +58,7 @@ namespace FishingHotspots
 
                     //provide values for the procedure's parameters
                     command.Parameters.AddWithValue("@title", txtTitle.Text);
-                    command.Parameters.AddWithValue("@text",txtDescription.Text);
+                    command.Parameters.AddWithValue("@text", txtDescription.Text);
                     command.Parameters.AddWithValue("@publishDate", DateTime.Now);
                     command.Parameters.AddWithValue("@image", image);
                     command.Parameters.AddWithValue("@username", userName);
@@ -108,17 +108,17 @@ namespace FishingHotspots
             return "";
         }
 
-        // Gets the posted image in binary
-        private byte[] UploadImage()
+        // Gets the image path
+        private string UploadImage()
         {
-            // creates a new byte array to store image
-            byte[] img = new byte[ImgUpload.PostedFile.ContentLength];
+            // gets path of image
+            string imgPath = string.Format("~/NewsImages/{0}", ImgUpload.FileName);
 
-            // Reads posted image into byte[] img
-            HttpPostedFile image = ImgUpload.PostedFile;
-            image.InputStream.Read(img, 0, (int)ImgUpload.PostedFile.ContentLength);
+            // saves to folder folder 
+            ImgUpload.SaveAs(Server.MapPath(imgPath));
 
-            return img;
+
+            return imgPath;
         }
 
     }
