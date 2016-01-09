@@ -1,10 +1,4 @@
-﻿@font-face {
-font-family: 'din';
-src: url('fonts/din.eot');
-src: url('fonts/din.eot?#iefix') format('embedded-opentype'), url('fonts/din.woff') format('woff'), url('fonts/din.ttf') format('truetype'), url('fonts/din.svg#din') format('svg');
-font-weight: normal;
-font-style: normal;
-}
+﻿
 
 body {	color:#555;	font:normal 13px/22px Arial;	background:url(../images/bgmain.png) #eee;}
 
@@ -19,6 +13,7 @@ h6{margin: 0 0 10px 0; font-size: 14px;}
 h4 span{margin-right: 5px; font-size: 15px;}
 h6 span{margin-right: 5px; font-size: 12px;}
 
+.reviews{margin-bottom:20px; margin-top:20px}
 
 p{margin-bottom: 30px;}
 a{color:#72b70f; text-decoration:none;outline: none;}
@@ -26,7 +21,7 @@ a:hover{color:#333;}
 
 .center{text-align: center;}
 .fullwidth{width: 100%;}
-select,input{outline: 0; margin-bottom: 20px;}
+select,input{margin-bottom: 20px;}
 a.more{background-color: #222; padding: 2px 6px;color: #fff; text-transform: uppercase; font-size: 11px;}
 a.more:hover{background: #64a30a;text-decoration: none;}
 
@@ -39,20 +34,6 @@ table{background-color: #fff;}
 
 .thumbnail{ background-color:#fff;}
 
-
-
-
-
-
-.properties-listing .viewall{margin-top: 15px;}
-.Property-listing div.properties{padding: 10px; background-color: #fff;text-align: center; margin-bottom: 20px;}
-.Fishing-listing div.properties .image-holder{position: relative;}
-.properties-listing div.properties .status{position: absolute;bottom: 0;z-index: 100;display: block;width: 100%;color: #fff;padding:0 3px;text-align: right; font-size: 12px;}
-.properties-listing div.properties p{margin-bottom: 10px; font-size: 14px;border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;padding: 5px 0;font-family: din;}
-
-.listing-detail{margin-bottom: 30px;}
-.listing-detail span{color: #fff; width: 25px; height: 25px; background-color: #555;display: inline-block;border-radius:25px; text-align: center;line-height: 26px; font-size: 14px;cursor: crosshair;}
-.listing-detail span:hover{background: #72b70f;}
 
 /*inside*/
 .inside-banner{background:url(../images/bginside.jpg) #222;color: #fff; padding: 30px 0;margin-bottom:20px}

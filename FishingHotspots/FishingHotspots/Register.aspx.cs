@@ -45,52 +45,55 @@ namespace FishingHotspots
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            try
+            if (IsValid)
             {
-                conn.Open();
-                command.Connection = conn;
-
-                //read data from the database to check if the username already exists
-                command.CommandText = string.Format("select UserName from usersTbl where UserName='{0}'", txtUserName.Text);
-                queryResults = command.ExecuteReader();
-
-                if (queryResults.Read())
+                try
                 {
-                    lblError.Text = string.Format("The user name {0} already exists - please provide a different user name", txtUserName.Text);
-                    queryResults.Close();
+                    conn.Open();
+                    command.Connection = conn;
+
+                    //read data from the database to check if the username already exists
+                    command.CommandText = string.Format("select UserName from usersTbl where UserName='{0}'", txtUserName.Text);
+                    queryResults = command.ExecuteReader();
+
+                    if (queryResults.Read())
+                    {
+                        lblError.Text = string.Format("The user name {0} already exists - please provide a different user name", txtUserName.Text);
+                        queryResults.Close();
+                    }
+                    else
+                    {
+                        queryResults.Close();
+
+                        //set the commandType to storedprocedure
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        //set the commandText to the name of our stored procedure
+                        command.CommandText = "[dbo].[CreateUser]";
+
+                        //provide values for the procedure's parameters
+                        command.Parameters.AddWithValue("@FirstName", txtFirstName.Text);
+                        command.Parameters.AddWithValue("@LastName", txtLastName.Text);
+                        command.Parameters.AddWithValue("@Username", txtUserName.Text);
+                        command.Parameters.AddWithValue("@Email", txtEmail.Text);
+                        command.Parameters.AddWithValue("@Passwordhash", GetMd5Hash(txtPassword.Text));
+                        //execute the command
+                        command.ExecuteNonQuery();
+
+                        //redirect to the home page of the site
+                        FormsAuthentication.RedirectFromLoginPage(txtUserName.Text, true);
+                    }
                 }
-                else
+
+                catch (Exception ex)
                 {
-                    queryResults.Close();
-
-                    //set the commandType to storedprocedure
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    //set the commandText to the name of our stored procedure
-                    command.CommandText = "[dbo].[CreateUser]";
-
-                    //provide values for the procedure's parameters
-                    command.Parameters.AddWithValue("@FirstName", txtFirstName.Text);
-                    command.Parameters.AddWithValue("@LastName", txtLastName.Text);
-                    command.Parameters.AddWithValue("@Username", txtUserName.Text);
-                    command.Parameters.AddWithValue("@Email", txtEmail.Text);
-                    command.Parameters.AddWithValue("@PasswordHash", GetMd5Hash(txtPassword.Text));
-                    //execute the command
-                    command.ExecuteNonQuery();
-
-                    //redirect to the home page of the site
-                    FormsAuthentication.RedirectFromLoginPage(txtUserName.Text, true);
+                    lblError.Text = ex.Message;
                 }
-            }
 
-            catch (Exception ex)
-            {
-                lblError.Text = ex.Message;
-            }
-
-            finally
-            {
-                conn.Close();
+                finally
+                {
+                    conn.Close();
+                }
             }
 
 

@@ -5,4 +5,6 @@
 .register input,.register textarea, .register select  {padding: 10px; height: 50px; margin-bottom: 15px;}
 .spacer{margin-top: 40px;margin-bottom:40px;}
 
+.fileupload,input[type=text],input[type=image],.WriteReview textarea, .WriteReview select{padding: 10px; height: 50px; margin-bottom: 15px;}
+
 
