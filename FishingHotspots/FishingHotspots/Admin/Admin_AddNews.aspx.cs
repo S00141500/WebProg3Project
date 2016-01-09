@@ -64,6 +64,9 @@ namespace FishingHotspots
                     command.Parameters.AddWithValue("@username", userName);
                     //execute the command
                     command.ExecuteNonQuery();
+
+                    // redirect to news page to see new article
+                    Response.Redirect("../News.aspx");
                 }
                 catch (Exception ex)
                 {
@@ -78,13 +81,7 @@ namespace FishingHotspots
 
             }
         }
-
-        private int GetAdminId()
-        {
-            // this value is hard coded for testing.
-
-            return 9;
-        }
+        
 
         private string GetUpdateStatus(bool status)
         {
@@ -112,7 +109,7 @@ namespace FishingHotspots
         private string UploadImage()
         {
             // gets path of image
-            string imgPath = string.Format("~/NewsImages/{0}", ImgUpload.FileName);
+            string imgPath = string.Format("../NewsImages/{0}", ImgUpload.FileName);
 
             // saves to folder folder 
             ImgUpload.SaveAs(Server.MapPath(imgPath));
@@ -121,5 +118,26 @@ namespace FishingHotspots
             return imgPath;
         }
 
+        protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            string extension = ImgUpload.FileName.Substring(ImgUpload.FileName.LastIndexOf('.'));
+
+            switch (extension)
+            {
+                case ".jpg":
+                    args.IsValid = true;
+                    break;
+                case ".png":
+                    args.IsValid = true;
+                    break;
+                case ".gif":
+                    args.IsValid = true;
+                    break;
+                default:
+                    args.IsValid = false;
+                    break;
+            }
+
+        }
     }
 }
