@@ -17,7 +17,8 @@ namespace FishingHotspots
         SqlCommand command = new SqlCommand();
         SqlDataReader reader;
 
-        private delegate void MarkStadler(string s);
+        private delegate void MarkStadler(string AddOrDelete,string field,bool x);
+        private delegate void MarkStadler2(string s);
         private event MarkStadler MyEvent;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -145,7 +146,7 @@ namespace FishingHotspots
         }
 
         // sets the error message of status label based on success or fail
-        private void GetUpdateStatus(bool status)
+        private void GetUpdateStatus(string AddOrDelete, string field, bool status)
         {
             string statusMsg = "";
 
@@ -176,7 +177,7 @@ namespace FishingHotspots
 
         protected void dpCounty_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MyEvent(dpCounty.SelectedValue);
+           // MyEvent(dpCounty.SelectedValue);
         }
 
         protected void dpFieldDelete_SelectedIndexChanged(object sender, EventArgs e)
