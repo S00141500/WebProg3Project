@@ -13,6 +13,15 @@ namespace FishingHotspots {
     public partial class Write_Review {
         
         /// <summary>
+        /// lblHashedUsrNme control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblHashedUsrNme;
+        
+        /// <summary>
         /// lblError control.
         /// </summary>
         /// <remarks>
@@ -20,6 +29,24 @@ namespace FishingHotspots {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblError;
+        
+        /// <summary>
+        /// lblError2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError2;
+        
+        /// <summary>
+        /// lblError3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError3;
         
         /// <summary>
         /// rfvFirstName control.

@@ -1,0 +1,34 @@
+﻿body {
+    	color:#555;	font:normal 13px/22px Arial;	background:url(../images/bgmain.png) #eee;
+}
+
+.emptyNewslist{
+    font-size:20px;
+    text-align:center;
+    background-color:#feb6b6;
+    height:200px;
+}
+
+.NewsTemplate{
+   
+    border-bottom:5px solid yellow;
+    padding-bottom:5px;
+    margin-bottom:5px;
+    
+}
+/*inside*/
+.inside-banner{background:url(../images/bginside.jpg) #222;color: #fff; padding: 30px 0;margin-bottom:20px}
+.inside-banner h2{margin: 0; color: #fff;}
+.inside-banner span{margin-top: 10px;}
+
+h1,h2,h3,h4,h5 { font-weight:normal; font-family: din;margin: 0;padding: 0;color: #000}
+h1{font-size: 60px; margin-bottom: 25px;color: #fff;}
+h2{font-size: 35px; letter-spacing: -1px;margin-bottom: 20px;}
+h3{margin: 0 0 15px 0; font-size: 25px;}
+h4{margin: 10px 0; font-size: 19px;}
+h5{margin: 0 0 5px 0; font-size: 17px;}
+h6{margin: 0 0 10px 0; font-size: 14px;}
+
+h4 span{margin-right: 5px; font-size: 15px;}
+h6 span{margin-right: 5px; font-size: 12px;}
+

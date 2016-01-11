@@ -96,6 +96,7 @@
     <Content Include="assets\slitslider\js\jquery.slitslider.js" />
     <Content Include="assets\slitslider\js\modernizr.custom.79639.js" />
     <Content Include="assets\style.css" />
+    <Content Include="CSS\News.css" />
     <Content Include="CSS\PageForms.css" />
     <Content Include="CSS\Register.css" />
     <Content Include="CSS\Reviews.css" />
@@ -131,6 +132,13 @@
     <Content Include="images\slider\5.jpg" />
     <Content Include="images\twitter.png" />
     <Content Include="Index.aspx" />
+    <Content Include="News.aspx" />
+    <Content Include="NewsImages\044493-glossy-black-icon-sports-hobbies-fishing-sc46.jpg" />
+    <Content Include="NewsImages\080911-pike-derg.jpg" />
+    <Content Include="NewsImages\12290648_10153238705586398_502838440_o1-300x169.jpg" />
+    <Content Include="NewsImages\derg1-480x360.jpg" />
+    <Content Include="NewsImages\images.jpeg" />
+    <Content Include="NewsImages\logo.jpg" />
     <Content Include="Register.aspx" />
     <Content Include="Reviews.aspx" />
     <Content Include="Web.config" />
@@ -167,6 +175,13 @@
     </Compile>
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="News.aspx.cs">
+      <DependentUpon>News.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="News.aspx.designer.cs">
+      <DependentUpon>News.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.aspx.cs">

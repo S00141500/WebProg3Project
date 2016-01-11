@@ -16,7 +16,12 @@
         <div class="spacer">
             <div class="row WriteReview">
                 <div class="col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+                    <asp:Label ID="lblHashedUsrNme" runat="server" Text="" CssClass="alert-danger" Display="Dynamic"></asp:Label>
+
                     <asp:Label ID="lblError" runat="server" Text="" CssClass="alert-danger" Display="Dynamic"></asp:Label>
+                    <asp:Label ID="lblError2" runat="server" Text="" CssClass="alert-danger  " Display="Dynamic"></asp:Label>
+                    <asp:Label ID="lblError3" runat="server" Text="" CssClass="alert-danger" Display="Dynamic"></asp:Label>
+
                     <asp:RequiredFieldValidator ID="rfvFirstName" runat="server" ErrorMessage="RequiredFieldValidator" Text="*Please enter First Name" ControlToValidate="txtTitle" CssClass="alert-danger" Display="Dynamic" ValidationGroup="Register"></asp:RequiredFieldValidator>
                     <asp:TextBox ID="txtTitle" placeholder="Title" runat="server" class="form-control"></asp:TextBox>
 

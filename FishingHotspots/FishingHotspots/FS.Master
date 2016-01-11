@@ -120,7 +120,7 @@
                     <h4>Information</h4>
                     <ul class="row">
                         <li class="col-lg-12 col-sm-12 col-xs-3"><a href="review.aspx">Review</a></li>
-                        <li class="col-lg-12 col-sm-12 col-xs-3"><a href="agents.php">News</a></li>
+                        <li class="col-lg-12 col-sm-12 col-xs-3"><a href="News.aspx">News</a></li>
 
                     </ul>
                 </div>
