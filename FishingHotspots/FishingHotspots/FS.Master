@@ -13,7 +13,7 @@
     <script src="../assets/bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript">
         function alertMessage(AttemptsNo) {
-            alert('Invalid Login Please Try again ' + AttemptsNo + 'Attempts');
+            alert('Invalid Login Please Try again ' + AttemptsNo + ' Attempts');
         }
     </script>
 </head>

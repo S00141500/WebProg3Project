@@ -142,6 +142,7 @@ namespace FishingHotspots
                     Response.Redirect("Index.aspx",false);
 
                 }
+                // if login fails the event and delaegate is called. Alerts message and number of attempts
                 else
                 {
                     Application.Lock();
@@ -185,6 +186,8 @@ namespace FishingHotspots
 
             Response.Redirect("Index.aspx");
         }
+
+        // alerts fail message and shows number of attempts 
         public void attemptsMade(int i)
         {
             if (IsPostBack)
@@ -198,6 +201,7 @@ namespace FishingHotspots
             }
 
         }
+        //shows error message with number of attempts remaining
         public void attemptsLeft(int i)
         {
             if (3 - i <= 0)

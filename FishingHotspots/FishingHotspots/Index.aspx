@@ -99,11 +99,11 @@
                     <ItemTemplate>
                         <div class="row">
                             <div class="col-lg-4">
-                                <a href="ReviewDetails?id=<%# Eval("reviewId") %>"><asp:Image ID="reviewImage" runat="server" ImageUrl='<%#Eval("Photo") %>' class="img-responsive" alt="review" /><a>
+                                <a href="ReviewDetails.aspx?id=<%# Eval("reviewId") %>"><asp:Image ID="reviewImage" runat="server" ImageUrl='<%#Eval("Photo") %>' class="img-responsive" alt="review" /><a>
                             </div>
                             <div class="col-lg-8">
                                 <h5><strong><%#:Eval("Title")%></strong></h5>
-                                <p class="price"><b>Rating:</b> <%# Eval("averageRating")%> out of 5</p>
+                                <p class="price"><b>Likes</b> <%# Eval("averageRating")%> people liked this</p>
                                 <p class="price"><%# Eval("ReviewDate","{0:MMM dd, yyyy}")%></p>
                             </div>
                         </div>

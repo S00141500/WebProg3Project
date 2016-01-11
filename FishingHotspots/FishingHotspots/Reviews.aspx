@@ -23,14 +23,14 @@
                         <h4><span class="glyphicon glyphicon-search"></span>Search for</h4>
                         <div class="row">
                             <div class="col-lg-12">
-                                <asp:DropDownList ID="ddlFishType" runat="server" class="form-control">
+                                <asp:DropDownList ID="ddlFishType" runat="server" class="form-control dll" >
                                     <asp:ListItem Value="1">Coarse</asp:ListItem>
                                     <asp:ListItem Value="2">Game</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                             <div class="col-lg-12">
                                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:FishingHotspotsDB %>" SelectCommand="SELECT * FROM [RegionsTbl]"></asp:SqlDataSource>
-                                <asp:DropDownList ID="ddlWhere" runat="server" class="form-control" DataSourceID="SqlDataSource1" DataTextField="County" DataValueField="Id">
+                                <asp:DropDownList ID="ddlWhere" runat="server" class="form-control dll" DataSourceID="SqlDataSource1" DataTextField="County" DataValueField="Id" >
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                                         <a href="ReviewDetails?id=<%# Eval("reviewId") %>">
                                             <h5 class="alert-info"><strong><%#:Eval("Title")%></strong></h5>
                                         </a>
-                                        <p class="price"><b>Rating:</b> <%# Eval("averageRating")%> out of 5</p>
+                                        <p class="price"><b>Likes:</b> <%# Eval("averageRating")%> people liked this</p>
                                         <p class="price"><%# Eval("ReviewDate","{0:MMM dd, yyyy}")%></p>
                                     </div>
                                 </div>
@@ -68,15 +68,6 @@
 
 
                 <div class="col-lg-8 col-lg-offset-1 col-sm-8">
-                    <div class="sortby clearfix">
-                        <div class="pull-right">
-                            <select class="form-control">
-                                <option>Sort by</option>
-                                <option>Price: Low to High</option>
-                                <option>Price: High to Low</option>
-                            </select>
-                        </div>
-                    </div>
                     <asp:Label ID="lblError" runat="server" Text="" CssClass="alert-danger" Display="Dynamic"></asp:Label>
                     <asp:ListView ID="ListViewReviews" runat="server">
                         <ItemTemplate>
@@ -86,7 +77,7 @@
                                 </div>
                                 <h4><strong><%#:Eval("Title")%></strong></h4>
                                 <p class="price"><b>Date</b> <%# Eval("ReviewDate","{0:dd/MM/yyyy}")%></p>
-                                <a class="btn btn-primary" href="property-detail.php">View Details</a>
+                                <a class="btn btn-primary" href="ReviewDetails.aspx?id=<%# Eval("Id") %>">View Details</a>
                             </div>
                         </ItemTemplate>
                         <LayoutTemplate>

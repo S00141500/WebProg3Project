@@ -22,6 +22,7 @@ namespace FishingHotspots
 
         }
 
+        //saves review inputs to database
         protected void btnSave_Click(object sender, EventArgs e)
         {
             if (IsValid)
@@ -31,7 +32,7 @@ namespace FishingHotspots
                     conn.Open();
                     command.Connection = conn;
 
-                    
+                        //saves images into Review images
                         if (ImgUpload.HasFile && ImgUpload.PostedFile.ContentLength > 0)
                         {
 
@@ -87,12 +88,15 @@ namespace FishingHotspots
             }
         }
         
+        //displays either river or lake for each county
         protected void ddlRiverOrLake_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
                 conn.Open();
                 command.Connection = conn;
+
+                //displays rivers
                 if (ddlRiverOrLake.SelectedIndex == 0)
                 {
                     command.CommandText = string.Format("select * from RiversTbl where Region = {0}", ddlCounties.SelectedValue);
@@ -103,6 +107,7 @@ namespace FishingHotspots
                     ddlRiverLake.DataTextField = "RiverName";
                     ddlRiverLake.DataBind();
                 }
+                //displays lakes
                 else
                 {
                     command.CommandText = string.Format("select * from LakesTbl where Region = {0}", ddlCounties.SelectedValue);
@@ -125,16 +130,19 @@ namespace FishingHotspots
             }
         }
 
+        // river or lake placeholders
         protected void ddlRiverLake_DataBound(object sender, EventArgs e)
         {
             ddlRiverLake.Items.Insert(0, new ListItem("--Select River or Lake--", ""));
         }
 
+        //displays counties
         protected void ddlCounties_DataBound(object sender, EventArgs e)
         {
             ddlCounties.Items.Insert(0, new ListItem("--Select County--", ""));
         }
 
+        //displays either river or lakes in each county
         protected void ddlCounties_SelectedIndexChanged(object sender, EventArgs e)
         {
             try {

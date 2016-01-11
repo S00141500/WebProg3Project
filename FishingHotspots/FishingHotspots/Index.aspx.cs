@@ -21,23 +21,26 @@ namespace FishingHotspots
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            //check for authentication cookie
             if (Request.Cookies["myAuthCookie"] != null)
             {
                 btnloginCentre.Visible = false;
                 txtCentreLogin.Text = string.Format("Welcome {0}. Search for reviews here", HttpContext.Current.User.Identity.Name);
             }
 
+            //populates where dropdown
             PopulateWhere();
             
         }
 
+        //takes user selection and passes it to review page
         protected void btnFindReviews_Click(object sender, EventArgs e)
         {
             Session.Add("Where", ddlWhere.SelectedValue);
             Session.Add("Type", ddlFishType.SelectedValue);
             Response.Redirect("Reviews.aspx");
         }
+        //populates where dropdown
         public void PopulateWhere()
         {
             conn.Open();

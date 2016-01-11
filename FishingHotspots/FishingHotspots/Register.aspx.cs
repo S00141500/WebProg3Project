@@ -53,9 +53,12 @@ namespace FishingHotspots
                     command.Connection = conn;
 
                     //read data from the database to check if the username already exists
-                    command.CommandText = string.Format("select UserName from usersTbl where UserName='{0}'", txtUserName.Text);
+                    command.CommandText = string.Format("select UserName from usersTbl where UserName=@uName");
+                    command.Parameters.AddWithValue("@uName", txtUserName.Text);
+
                     queryResults = command.ExecuteReader();
 
+                    //displays error if username exists
                     if (queryResults.Read())
                     {
                         lblError.Text = string.Format("The user name {0} already exists - please provide a different user name", txtUserName.Text);

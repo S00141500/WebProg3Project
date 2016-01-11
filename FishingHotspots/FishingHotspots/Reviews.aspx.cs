@@ -18,6 +18,7 @@ namespace FishingHotspots
         SqlDataReader queryResults;
         protected void Page_Load(object sender, EventArgs e)
         {
+            //checks for session where and type to display correct info
             if (Session["Where"] != null && Session["Type"] != null)
             {
                 int Where = Convert.ToInt32(Session["Where"]);
@@ -59,6 +60,7 @@ namespace FishingHotspots
                     conn.Close();
                 }
             }
+            //displays all reviews if no seesion state exists
             else
             {
                 try
@@ -83,7 +85,7 @@ namespace FishingHotspots
                 }
                 catch (Exception ex)
                 {
-
+                    lblError.Text = ex.Message;
                 }
 
                 finally
@@ -91,6 +93,7 @@ namespace FishingHotspots
                     conn.Close();
                 }
             }
+            Session.Clear();
 
         }
 
