@@ -17,33 +17,59 @@ namespace FishingHotspots
         static string connString = WebConfigurationManager.ConnectionStrings["FishingHotspotsDB"].ConnectionString;
         SqlConnection conn = new SqlConnection(connString);
         SqlCommand command = new SqlCommand();
-        SqlDataReader queryResults;
 
-        private delegate string newsDel(bool b);
+        // Delegate used to fire methods to control the output msg.
+        public delegate void markStadler1(bool s);
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Request.Cookies["myAuthCookie"] == null)
-            //    FormsAuthentication.RedirectToLoginPage();
+            if (Request.Cookies["myAuthCookie"] == null)
+            {
+                FormsAuthentication.RedirectToLoginPage();
+            }
+            else
+            {
+                // if user is athutneticated
+                if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
 
-            //else
-            //{
+                    if (HttpContext.Current.User.Identity is FormsIdentity)
+                    {
+                        FormsIdentity id = (FormsIdentity)HttpContext.Current.User.Identity;
+                        FormsAuthenticationTicket ticket = id.Ticket;
+                        string userData = ticket.UserData;
 
-            //}
-
-
+                        // if user is not an administrator redirect to index\login page
+                        if (userData != "Administrator")
+                        {
+                            FormsAuthentication.RedirectToLoginPage();
+                        }
+                    }
+                }
+            }
         }
+
 
         protected void btnSaveNews_Click(object sender, EventArgs e)
         {
             if (IsValid)
             {
+                // Create a delegate and assign methods
+                markStadler1 del = new markStadler1(GetUpdateStatus);
+                del += GetStatusLabelClass;
+                del += ResetInputValuesOnResult;
+
+                // open connection
                 conn.Open();
                 command.Connection = conn;
 
                 try
                 {
+                    // holds image path
                     string image = "";
-                    if (ImgUpload.PostedFile != null)
+
+                    // checks if there is an image to be uploaded
+                    if (ImgUpload.HasFile)
                     {
                         image = UploadImage();
                     }
@@ -65,14 +91,15 @@ namespace FishingHotspots
                     //execute the command
                     command.ExecuteNonQuery();
 
-                    // redirect to news page to see new article
-                    Response.Redirect("../News.aspx");
+                    // if this is passed to delegate the news story has been added
+                    // and will then fire the methods to output relevent msg 
+                    del(true);
                 }
-                catch (Exception ex)
+                catch
                 {
-                    lblStatus.CssClass = "";
-                    //lblStatus.Text = "<span class='glyphicon glyphicon-ok'></span>"+statusMsg;
-                    lblStatus.Visible = true;
+                    // if this is passed to delegate the news story has NOT been added
+                    // and will then fire the methods to output relevent msg 
+                    del(false);
                 }
                 finally
                 {
@@ -81,28 +108,45 @@ namespace FishingHotspots
 
             }
         }
-        
 
-        private string GetUpdateStatus(bool status)
+        // sets the error message of status label based on success or fail
+        private void GetUpdateStatus(bool status)
         {
             string statusMsg = "";
 
             if (status == true)
             {
-                statusMsg = "The News Story has been sucessfully added to Database.";
+                statusMsg = "<span class='glyphicon glyphicon-ok'></span>   The News Story has been sucessfully added to Database.";
             }
             else
             {
-                statusMsg = "Error! Unable to add News Story to Database!";
+                statusMsg = "<span class='glyphicon glyphicon-remove'></span>   Error! Unable to add News Story to Database!";
             }
 
-            return statusMsg;
+            lblStatus.Text = statusMsg;
+
         }
 
-        private string GetStatusLableClass()
+        // sets the class of status label based on success or fail
+        private void GetStatusLabelClass(bool x)
         {
+            lblStatus.Visible = true;
+            if (x == true)
+                lblStatus.CssClass = "alert alert-success";
 
-            return "";
+            else
+                lblStatus.CssClass = "alert alert-danger";
+
+        }
+
+        // clears inputs if storty is added successfully to allow for another to be added
+        private void ResetInputValuesOnResult(bool x)
+        {
+            if (x == true)
+            {
+                txtTitle.Text = "";
+                txtDescription.Text = "";
+            }
         }
 
         // Gets the image path
@@ -114,10 +158,10 @@ namespace FishingHotspots
             // saves to folder folder 
             ImgUpload.SaveAs(Server.MapPath(imgPath));
 
-
             return imgPath;
         }
 
+        // custom validator ensures only .jpg,.png,.gif images are allowed to be uploaded
         protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
         {
             string extension = ImgUpload.FileName.Substring(ImgUpload.FileName.LastIndexOf('.'));
