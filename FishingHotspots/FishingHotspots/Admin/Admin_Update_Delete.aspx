@@ -12,13 +12,18 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-  <div class="inside-banner">
+    <div class="inside-banner">
         <div class="container">
             <span class="pull-right"><a href="Index.aspx">Home</a> /Fishing Details</span>
             <h2>Update Fishing Details</h2>
         </div>
     </div>
+    <div class="col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 ">
+        <h5 class="text-center">
+            <asp:Label ID="Label1" role="alert" runat="server"></asp:Label>
 
+        </h5>
+    </div>
     <div class="col-md-12 formStyle">
 
         <div>
@@ -26,9 +31,9 @@
         </div>
 
         <div class="col-md-offset-1 col-md-10 ">
-             
+
             <!-- left column -->
-            <div class="col-md-5 form-horizontal formStyle" >
+            <div class="col-md-5 form-horizontal formStyle">
                 <h3 class=" text-center h3-admin">Add Details</h3>
 
                 <div class="form-group">
@@ -41,7 +46,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4 text-left">County:</label>
                     <div class="col-sm-8">
-                        <asp:DropDownList ID="dpCounty" CssClass="list-group-item" runat="server" Width="200px">
+                        <asp:DropDownList ID="dpCounty" CssClass="list-group-item" runat="server" Width="200px" OnSelectedIndexChanged="dpCounty_SelectedIndexChanged">
                         </asp:DropDownList>
                     </div>
                 </div>
@@ -50,13 +55,15 @@
                     <label class="control-label col-sm-4 text-left">Name:</label>
                     <div class="col-sm-8">
                         <asp:TextBox ID="txtNewData" CssClass="list-group-item" runat="server" Width="200px"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" CssClass="alert-danger" ValidationGroup="valAdd" ControlToValidate="txtNewData" runat="server" SetFocusOnError="true" ErrorMessage="Please add the name of lake or river"></asp:RequiredFieldValidator>
+
                     </div>
                 </div>
 
 
                 <div class="form-group btnSaveNews">
                     <div class="col-sm-offset-4 col-sm-8">
-                        <asp:Button ID="btnAddItem" CssClass="btn-success btn btn-default" runat="server" Width="200px" Text="Add" OnClick="btnAddItem_Click" />
+                        <asp:Button ID="btnAddItem" ValidationGroup="valAdd" CssClass="btn-success btn btn-default" runat="server" Width="200px" Text="Add" OnClick="btnAddItem_Click" />
                     </div>
                 </div>
 
@@ -71,7 +78,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4 text-left">Field to Delete:</label>
                     <div class="col-sm-8">
-                        <asp:DropDownList ID="dpFieldDelete" CssClass="list-group-item" runat="server" Width="200px">
+                        <asp:DropDownList ID="dpFieldDelete" CssClass="list-group-item" runat="server" Width="200px" OnSelectedIndexChanged="dpFieldDelete_SelectedIndexChanged" AutoPostBack="true">
                         </asp:DropDownList>
                     </div>
                 </div>
@@ -79,21 +86,18 @@
                 <div class="form-group">
                     <div class="col-md-offset-4 col-sm-8">
                         <asp:ListBox ID="LstItems" CssClass="list-group-item" runat="server" Width="200px"></asp:ListBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass="alert-danger" ValidationGroup="valDelete" ControlToValidate="LstItems" runat="server" ErrorMessage="Please select an item from list to Delete"></asp:RequiredFieldValidator>
                     </div>
                 </div>
 
                 <div class="form-group btnSaveNews">
                     <div class="col-sm-offset-4 col-sm-8">
-                        <asp:Button ID="btnDeleteItem" runat="server" CssClass="btn-warning btn btn-default" Width="200px" Text="Delete" OnClick="btnDeleteItem_Click" />
+                        <asp:Button ID="btnDeleteItem" ValidationGroup="valDelete" runat="server" CssClass="btn-warning btn btn-default" Width="200px" Text="Delete" OnClick="btnDeleteItem_Click" />
                     </div>
                 </div>
 
             </div>
             <!-- end of right column -->
-
-
-
-
         </div>
     </div>
 

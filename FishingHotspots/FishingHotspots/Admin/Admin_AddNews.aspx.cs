@@ -17,39 +17,65 @@ namespace FishingHotspots
         static string connString = WebConfigurationManager.ConnectionStrings["FishingHotspotsDB"].ConnectionString;
         SqlConnection conn = new SqlConnection(connString);
         SqlCommand command = new SqlCommand();
-        SqlDataReader queryResults;
 
-        private delegate string newsDel(bool b);
+        // Delegate used to fire methods to control the output msg.
+        public delegate void markStadler1(bool s);
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Request.Cookies["myAuthCookie"] == null)
-            //    FormsAuthentication.RedirectToLoginPage();
+            if (Request.Cookies["myAuthCookie"] == null)
+            {
+                FormsAuthentication.RedirectToLoginPage();
+            }
+            else
+            {
+                // if user is athutneticated
+                if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
 
-            //else
-            //{
+                    if (HttpContext.Current.User.Identity is FormsIdentity)
+                    {
+                        FormsIdentity id = (FormsIdentity)HttpContext.Current.User.Identity;
+                        FormsAuthenticationTicket ticket = id.Ticket;
+                        string userData = ticket.UserData;
 
-            //}
-
-
+                        // if user is not an administrator redirect to index\login page
+                        if (userData != "Administrator")
+                        {
+                            FormsAuthentication.RedirectToLoginPage();
+                        }
+                    }
+                }
+            }
         }
+
 
         protected void btnSaveNews_Click(object sender, EventArgs e)
         {
             if (IsValid)
             {
+                // Create a delegate and assign methods
+                markStadler1 del = new markStadler1(GetUpdateStatus);
+                del += GetStatusLabelClass;
+                del += ResetInputValuesOnResult;
+
+                // open connection
                 conn.Open();
                 command.Connection = conn;
 
                 try
                 {
-                    byte[] image = new byte[] { };
-                    if (ImgUpload.PostedFile != null)
+                    // holds image path
+                    string image = "";
+
+                    // checks if there is an image to be uploaded
+                    if (ImgUpload.HasFile)
                     {
                         image = UploadImage();
                     }
 
                     // get the users name
-                   string userName = HttpContext.Current.User.Identity.Name;
+                    string userName = HttpContext.Current.User.Identity.Name;
                     //set the commandType to storedprocedure
                     command.CommandType = CommandType.StoredProcedure;
 
@@ -58,18 +84,22 @@ namespace FishingHotspots
 
                     //provide values for the procedure's parameters
                     command.Parameters.AddWithValue("@title", txtTitle.Text);
-                    command.Parameters.AddWithValue("@text",txtDescription.Text);
+                    command.Parameters.AddWithValue("@text", txtDescription.Text);
                     command.Parameters.AddWithValue("@publishDate", DateTime.Now);
                     command.Parameters.AddWithValue("@image", image);
                     command.Parameters.AddWithValue("@username", userName);
                     //execute the command
                     command.ExecuteNonQuery();
+
+                    // if this is passed to delegate the news story has been added
+                    // and will then fire the methods to output relevent msg 
+                    del(true);
                 }
-                catch (Exception ex)
+                catch
                 {
-                    lblStatus.CssClass = "";
-                    //lblStatus.Text = "<span class='glyphicon glyphicon-ok'></span>"+statusMsg;
-                    lblStatus.Visible = true;
+                    // if this is passed to delegate the news story has NOT been added
+                    // and will then fire the methods to output relevent msg 
+                    del(false);
                 }
                 finally
                 {
@@ -79,47 +109,79 @@ namespace FishingHotspots
             }
         }
 
-        private int GetAdminId()
-        {
-            // this value is hard coded for testing.
-
-            return 9;
-        }
-
-        private string GetUpdateStatus(bool status)
+        // sets the error message of status label based on success or fail
+        private void GetUpdateStatus(bool status)
         {
             string statusMsg = "";
 
             if (status == true)
             {
-                statusMsg = "The News Story has been sucessfully added to Database.";
+                statusMsg = "<span class='glyphicon glyphicon-ok'></span>   The News Story has been sucessfully added to Database.";
             }
             else
             {
-                statusMsg = "Error! Unable to add News Story to Database!";
+                statusMsg = "<span class='glyphicon glyphicon-remove'></span>   Error! Unable to add News Story to Database!";
             }
 
-            return statusMsg;
+            lblStatus.Text = statusMsg;
+
         }
 
-        private string GetStatusLableClass()
+        // sets the class of status label based on success or fail
+        private void GetStatusLabelClass(bool x)
         {
+            lblStatus.Visible = true;
+            if (x == true)
+                lblStatus.CssClass = "alert alert-success";
 
-            return "";
+            else
+                lblStatus.CssClass = "alert alert-danger";
+
         }
 
-        // Gets the posted image in binary
-        private byte[] UploadImage()
+        // clears inputs if storty is added successfully to allow for another to be added
+        private void ResetInputValuesOnResult(bool x)
         {
-            // creates a new byte array to store image
-            byte[] img = new byte[ImgUpload.PostedFile.ContentLength];
-
-            // Reads posted image into byte[] img
-            HttpPostedFile image = ImgUpload.PostedFile;
-            image.InputStream.Read(img, 0, (int)ImgUpload.PostedFile.ContentLength);
-
-            return img;
+            if (x == true)
+            {
+                txtTitle.Text = "";
+                txtDescription.Text = "";
+            }
         }
 
+        // Gets the image path
+        private string UploadImage()
+        {
+            // gets path of image
+            string imgPath = string.Format("../NewsImages/{0}", ImgUpload.FileName);
+
+            // saves to folder folder 
+            ImgUpload.SaveAs(Server.MapPath(imgPath));
+
+            return imgPath;
+        }
+
+        // custom validator ensures only .jpg,.png,.gif images are allowed to be uploaded
+        protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            string extension = ImgUpload.FileName.Substring(ImgUpload.FileName.LastIndexOf('.'));
+
+            switch (extension)
+            {
+                case ".jpg":
+                    args.IsValid = true;
+                    break;
+                case ".png":
+                    args.IsValid = true;
+                    break;
+                case ".gif":
+                    args.IsValid = true;
+                    break;
+                default:
+                    args.IsValid = false;
+                    break;
+            }
+
+        }
     }
 }
