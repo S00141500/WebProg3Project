@@ -9,6 +9,8 @@ using System.Web.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using System.Web.Security;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace FishingHotspots
 {
@@ -19,7 +21,9 @@ namespace FishingHotspots
         SqlCommand command = new SqlCommand();
 
         // Delegate used to fire methods to control the output msg.
-        public delegate void markStadler1(bool s);
+        public delegate void markStadlerDel1(bool s);
+        public delegate void markStadlerDel2(string s);
+        public event markStadlerDel2 MarkStadlerEvent;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,6 +43,10 @@ namespace FishingHotspots
                         FormsAuthenticationTicket ticket = id.Ticket;
                         string userData = ticket.UserData;
 
+
+                        MarkStadlerEvent += new markStadlerDel2(GetMd5Hash);
+                        MarkStadlerEvent(userData);
+
                         // if user is not an administrator redirect to index\login page
                         if (userData != "Administrator")
                         {
@@ -55,7 +63,7 @@ namespace FishingHotspots
             if (IsValid)
             {
                 // Create a delegate and assign methods
-                markStadler1 del = new markStadler1(GetUpdateStatus);
+                markStadlerDel1 del = new markStadlerDel1(GetUpdateStatus);
                 del += GetStatusLabelClass;
                 del += ResetInputValuesOnResult;
 
@@ -166,6 +174,7 @@ namespace FishingHotspots
         {
             string extension = ImgUpload.FileName.Substring(ImgUpload.FileName.LastIndexOf('.'));
 
+
             switch (extension)
             {
                 case ".jpg":
@@ -183,5 +192,26 @@ namespace FishingHotspots
             }
 
         }
+
+        private void GetMd5Hash(string input)
+        {
+            string output = "";
+
+            using (MD5 md5Hash = MD5.Create())
+            {
+
+                byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+                foreach (byte b in data)
+                {
+                    output = output + b.ToString("x2");
+                }
+            }
+
+            lblStatus.Visible = true;
+            lblStatus.CssClass = "alert alert-info";
+            lblStatus.Text = "Your Role Type hashed is : " + output;
+        }
+
     }
 }

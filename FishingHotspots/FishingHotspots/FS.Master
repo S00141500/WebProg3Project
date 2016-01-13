@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="CSS/master.css" />
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="../assets/bootstrap/js/bootstrap.js"></script>
-    <script type="text/javascript">
-        function alertMessage(AttemptsNo) {
+    <script type="text/javascript">        function alertMessage(AttemptsNo) {
             alert('Invalid Login Please Try again ' + AttemptsNo + ' Attempts');
         }
     </script>
@@ -43,17 +42,8 @@
                             <li runat="server"><a href="../Reviews.aspx">Reviews</a></li>
                             <li runat="server" id="liWrite" visible="false"><a href="../Write_Review.aspx">Write a Review</a></li>
                             <li runat="server"><a href="../News.aspx">News</a></li>  
-                            <%-- <li runat="server" id="li1" visible="false"><a href="Write a review.aspx">Add News (Admin)</a></li>
-
-                            <li runat="server" id="li2" visible="false"><a href="Write a review.aspx">Add/Update/Delete (Admin)</a></li>--%>
-                            <%-- <li>
-                                <asp:DropDownList ID="dpAdmin" runat="server" Visible="false">
-                                    <asp:ListItem>Add News Story</asp:ListItem>
-                                    <asp:ListItem>Update\Delete</asp:ListItem>
-                                </asp:DropDownList
-                            </li>--%>
-
-                            <li id="btnAdmin" runat="server" class="dropdown" visible="false">
+                          
+                            <li id="btnAdmin" runat="server" class="dropdown " visible="false">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a id="btnAddNews" runat="server" href="~/Admin/Admin_AddNews.aspx">Add News Story</a></li>
@@ -163,21 +153,22 @@
 </body>
 <script>
     $(document).ready(function () {
-        var str = location.href.toLowerCase();
+
+        $('#home').addClass('active');
         
-        $("#nav li a").each(function () {
-            if (str.indexOf($(this).attr("href").slice(3).toLowerCase()) > -1) {
-                $("li .active").removeClass("active");
-                $(this).parent().addClass("active");
-            }
-        });
-        $("li .active").parents().each(function () {
-            if ($(this).is("li")) {
-                $(this).addClass("active");
-            }
-        });
+        // gets the location
+        var url = window.location;
+        // Will only work if string in href matches with location
+        $('ul.nav a[href="' + url + '"]').parent().addClass('active');
 
-
+        // Will also work for relative and absolute hrefs i.e admin and root
+        $('ul.nav a').filter(function () {
+            return this.href == url;
+        }).parent().addClass('active').parent().parent().addClass('active');
+       
+        if (url.pathname == "/Index.aspx") {
+            $('ul.nav li:first').addClass('active');
+        }
     });
 
 

@@ -1,12 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FS.Master" AutoEventWireup="true" CodeBehind="Admin_Update_Delete.aspx.cs" Inherits="FishingHotspots.Admin_Update_Delete" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../FS.Master" AutoEventWireup="true" CodeBehind="Admin_Update_Delete.aspx.cs" Inherits="FishingHotspots.Admin_Update_Delete" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Update & Delete | Admin</title>
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.css" />
-    <link rel="stylesheet" href="../CSS/master.css" />
-    <link rel="stylesheet" href="../CSS/PageForms.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.js"></script>
     <link href="../CSS/PageForms.css" type="text/css" rel="stylesheet" />
 
 </asp:Content>
@@ -18,27 +14,23 @@
             <h2>Update Fishing Details</h2>
         </div>
     </div>
-    <div class="col-lg-6 col-lg-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 ">
-        <h5 class="text-center">
-            <asp:Label ID="Label1" role="alert" runat="server"></asp:Label>
-
-        </h5>
-    </div>
     <div class="col-md-12 formStyle">
 
-        <div>
-            <asp:Label ID="lblStatus" runat="server" class="alert alert-success fade in" hidden="hidden"></asp:Label>
-        </div>
+        <div class=" col-md-push-1 col-md-11">
+            <div class="col-md-offset-4 col-md-4">
+                <asp:Label ID="lblStatus" runat="server" class=""></asp:Label>
+            </div>
+            <br />
+            <br />
 
-        <div class="col-md-offset-1 col-md-10 ">
 
             <!-- left column -->
-            <div class="col-md-5 form-horizontal formStyle">
+            <div class="col-md-4 col-md-offset-1  form-horizontal formStyle">
                 <h3 class=" text-center h3-admin">Add Details</h3>
 
                 <div class="form-group">
                     <label class="control-label col-sm-4 text-left">Field to Add:</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm--offset-2 col-sm-8">
                         <asp:DropDownList ID="DpField" runat="server" CssClass="list-group-item" Width="200px"></asp:DropDownList>
                     </div>
                 </div>
@@ -46,7 +38,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4 text-left">County:</label>
                     <div class="col-sm-8">
-                        <asp:DropDownList ID="dpCounty" CssClass="list-group-item" runat="server" Width="200px" OnSelectedIndexChanged="dpCounty_SelectedIndexChanged">
+                        <asp:DropDownList ID="dpCounty" CssClass="list-group-item" runat="server" Width="200px">
                         </asp:DropDownList>
                     </div>
                 </div>
@@ -72,7 +64,7 @@
 
 
             <!-- right column -->
-            <div class="col-md-5 col-md-offset-2 form-horizontal formStyle">
+            <div class="col-md-4 col-md-offset-1 form-horizontal formStyle">
                 <h3 class=" text-center h3-admin">Delete Details</h3>
 
                 <div class="form-group">
@@ -100,5 +92,4 @@
             <!-- end of right column -->
         </div>
     </div>
-
 </asp:Content>

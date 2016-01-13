@@ -30,7 +30,7 @@ namespace FishingHotspots
 
             //populates where dropdown
             PopulateWhere();
-            
+
         }
 
         //takes user selection and passes it to review page
@@ -48,7 +48,7 @@ namespace FishingHotspots
 
             //read data from the database to check if the username already exists
             command.CommandText = string.Format("select * from RegionsTbl");
- 
+
             ddlWhereValues = command.ExecuteReader();
 
             ddlWhere.DataSource = ddlWhereValues;
