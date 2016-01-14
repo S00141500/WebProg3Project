@@ -8,3 +8,16 @@
 .fileupload,input[type=text],input[type=image],.WriteReview textarea, .WriteReview select{padding: 10px; height: 50px; margin-bottom: 15px;}
 
 
+.display
+{
+    margin-top:100px;
+}
+.displayImg
+{
+    margin-bottom:100px;
+}
+.rated{
+    color:black;
+    font-size:medium;
+    background-color:gold;
+}

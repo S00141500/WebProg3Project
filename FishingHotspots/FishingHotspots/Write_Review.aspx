@@ -22,7 +22,8 @@
                     <asp:Label ID="lblError2" runat="server" Text="" CssClass="alert-danger  " Display="Dynamic"></asp:Label>
                     <asp:Label ID="lblError3" runat="server" Text="" CssClass="alert-danger" Display="Dynamic"></asp:Label>
 
-                    <asp:RequiredFieldValidator ID="rfvFirstName" runat="server" ErrorMessage="RequiredFieldValidator" Text="*Please enter First Name" ControlToValidate="txtTitle" CssClass="alert-danger" Display="Dynamic" ValidationGroup="Register"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="RegularExpressionValidator" ControlToValidate="txtTitle" ValidationExpression="/^[0-9A-Za-z!@.,;:'&quot;?-]{1,20}\z/" CssClass="alert-danger" Display="Dynamic" Text="*Title must be less than 20 charachters " ></asp:RegularExpressionValidator>
+                    <asp:RequiredFieldValidator ID="rfvTitle" runat="server" ErrorMessage="RequiredFieldValidator" Text="*Please enter First Name" ControlToValidate="txtTitle" CssClass="alert-danger" Display="Dynamic" ValidationGroup="Register"></asp:RequiredFieldValidator>
                     <asp:TextBox ID="txtTitle" placeholder="Title" runat="server" class="form-control"></asp:TextBox>
 
                     <asp:SqlDataSource ID="SqlDataSourceCounties" runat="server" ConnectionString="<%$ ConnectionStrings:FishingHotspotsDB %>" SelectCommand="SELECT * FROM [RegionsTbl]"></asp:SqlDataSource>

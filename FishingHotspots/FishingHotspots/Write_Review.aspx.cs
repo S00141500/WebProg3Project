@@ -17,8 +17,10 @@ namespace FishingHotspots
         static string connString = WebConfigurationManager.ConnectionStrings["FishingHotspotsDB"].ConnectionString;
         SqlConnection conn = new SqlConnection(connString);
         SqlCommand command = new SqlCommand();
+        SqlCommand command1 = new SqlCommand();
         SqlDataReader ddlWhereValues;
         string Path;
+        int? reviewID;
 
         public delegate void MyReviewEventHandler(string str);
         public event MyReviewEventHandler ReviewEvent;
@@ -47,6 +49,7 @@ namespace FishingHotspots
                 {
                     conn.Open();
                     command.Connection = conn;
+                    command1.Connection = conn;
 
 
                     if (ImgUpload.HasFile && ImgUpload.PostedFile.ContentLength > 0)
@@ -71,6 +74,7 @@ namespace FishingHotspots
                     if (ddlType.SelectedIndex == 0)
                     {
                         command.Parameters.AddWithValue("@FishingType", 1);
+
                     }
                     else
                     {
@@ -81,16 +85,54 @@ namespace FishingHotspots
                     command.Parameters.AddWithValue("@ReviewText", txtDescription.Text);
                     if (ddlRiverOrLake.SelectedIndex == 0)
                     {
-                        command.Parameters.AddWithValue("@River", 1);
+                        command.Parameters.AddWithValue("@River", ddlRiverLake.SelectedValue);
                         command.Parameters.AddWithValue("@Lake", DBNull.Value);
                     }
                     else
                     {
-                        command.Parameters.AddWithValue("@Lake", 2);
+                        command.Parameters.AddWithValue("@Lake", ddlRiverLake.SelectedValue);
                         command.Parameters.AddWithValue("@River", DBNull.Value);
                     }
+                    command.Parameters.Add("@review", SqlDbType.Int).Direction = ParameterDirection.Output;
                     //execute the command
                     command.ExecuteNonQuery();
+                    reviewID = (int)command.Parameters["@review"].Value;
+
+                    command1.CommandType = CommandType.StoredProcedure;
+                    //set the commandText to the name of our stored procedure
+                    command1.CommandText = "[dbo].[AddFishCaught]";
+
+                    if (ddlType.SelectedIndex == 0)
+                    {
+                        for (int i = 0; i < cbxCoarse.Items.Count - 1; i++)
+                        {
+                            if (cbxCoarse.Items[i].Selected)
+                            {
+                                command1.Parameters.AddWithValue("@FishSpecies", cbxCoarse.Items[i].Value);
+                                command1.Parameters.AddWithValue("@reviewId", reviewID);
+                                command1.ExecuteNonQuery();
+                                command1.Parameters.Clear();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < cbxGame.Items.Count - 1; i++)
+                        {
+                            if (cbxGame.Items[i].Selected)
+                            {
+                                command1.Parameters.AddWithValue("@reviewId", (Object)reviewID ?? DBNull.Value); ;
+                                command1.Parameters.AddWithValue("@FishSpecies", cbxGame.Items[i].Value);
+
+                                command1.ExecuteNonQuery();
+                                command1.Parameters.Clear();
+                            }
+                        }
+                    }
+
+
+
+
                 }
                 catch (Exception ex)
                 {
@@ -100,6 +142,8 @@ namespace FishingHotspots
                 {
                     conn.Close();
                 }
+
+                Response.Redirect("ReviewDetails.aspx?id=" + reviewID);
 
             }
 

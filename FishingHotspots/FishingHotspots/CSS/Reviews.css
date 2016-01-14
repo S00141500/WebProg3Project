@@ -50,6 +50,10 @@ table{background-color: #fff;}
 .hot-properties .row{margin-bottom: 20px;}
 .hot-properties .row p{margin-bottom: 5px;}
 
+#ImageDiv {
+    height:200px;
+    width:auto
+}
 .sortby .result{margin-top: 10px; margin-bottom:20px}
 
 .dll{

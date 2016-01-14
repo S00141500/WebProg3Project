@@ -72,7 +72,7 @@
                     <asp:ListView ID="ListViewReviews" runat="server">
                         <ItemTemplate>
                             <div class="col-lg-4 col-sm-6 reviews" runat="server" >
-                                <div class="image-holder">
+                                <div id="ImageDiv">
                                     <asp:Image ID="reviewImage" runat="server" ImageUrl='<%#Eval("Photo") %>' class="img-responsive" alt="review" />
                                 </div>
                                 <h4><strong><%#:Eval("Title")%></strong></h4>
