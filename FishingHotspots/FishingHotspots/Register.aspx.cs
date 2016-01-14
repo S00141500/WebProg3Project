@@ -90,7 +90,7 @@ namespace FishingHotspots
 
                 catch (Exception ex)
                 {
-                    lblError.Text = ex.Message;
+                    lblError.Text = "Oops Something went wrong. Please Try again";
                 }
 
                 finally

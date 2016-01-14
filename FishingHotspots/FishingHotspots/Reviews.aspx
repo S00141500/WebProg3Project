@@ -47,7 +47,7 @@
                                         <asp:Image ID="reviewImage" runat="server" ImageUrl='<%#Eval("Photo") %>' class="img-responsive img-circle" alt="review" />
                                     </div>
                                     <div class="col-lg-8 col-sm-7">
-                                        <a href="ReviewDetails?id=<%# Eval("reviewId") %>">
+                                        <a href="../ReviewDetails.aspx?id=<%# Eval("reviewId") %>">
                                             <h5 class="alert-info"><strong><%#:Eval("Title")%></strong></h5>
                                         </a>
                                         <p class="price"><b>Likes:</b> <%# Eval("averageRating")%> people liked this</p>
@@ -72,7 +72,7 @@
                     <asp:ListView ID="ListViewReviews" runat="server">
                         <ItemTemplate>
                             <div class="col-lg-4 col-sm-6 reviews" runat="server" >
-                                <div class="image-holder">
+                                <div id="ImageDiv">
                                     <asp:Image ID="reviewImage" runat="server" ImageUrl='<%#Eval("Photo") %>' class="img-responsive" alt="review" />
                                 </div>
                                 <h4><strong><%#:Eval("Title")%></strong></h4>
@@ -125,6 +125,5 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </asp:Content>

@@ -140,6 +140,7 @@
     <Content Include="NewsImages\images.jpeg" />
     <Content Include="NewsImages\logo.jpg" />
     <Content Include="Register.aspx" />
+    <Content Include="ReviewDetails.aspx" />
     <Content Include="Reviews.aspx" />
     <Content Include="Web.config" />
     <Content Include="Write_Review.aspx" />
@@ -190,6 +191,13 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReviewDetails.aspx.cs">
+      <DependentUpon>ReviewDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReviewDetails.aspx.designer.cs">
+      <DependentUpon>ReviewDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reviews.aspx.cs">
       <DependentUpon>Reviews.aspx</DependentUpon>

@@ -129,6 +129,7 @@ namespace FishingHotspots
                     conn.Open();
                     command.Connection = conn;
                     command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Clear();
 
                     if (dpFieldDelete.SelectedValue.ToString() == "Rivers")
                     {
@@ -144,13 +145,16 @@ namespace FishingHotspots
                     }
 
                     command.Parameters.AddWithValue("@name", LstItems.SelectedValue.ToString());
+
                     //execute the command
                     command.ExecuteNonQuery();
+                    
 
                     del("delete", dpFieldDelete.SelectedValue.ToString(), true);
+                    LstItems.Items.Remove(LstItems.SelectedValue.ToString());
 
                 }
-                catch
+                catch(Exception ex)
                 {
                     del("delete", dpFieldDelete.SelectedValue.ToString(), false);
                 }
@@ -202,7 +206,7 @@ namespace FishingHotspots
             }
 
             lblStatus.Text = statusMsg;
-
+             
         }
 
         protected void dpFieldDelete_SelectedIndexChanged(object sender, EventArgs e)
