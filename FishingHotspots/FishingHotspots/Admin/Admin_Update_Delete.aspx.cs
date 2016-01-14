@@ -249,11 +249,10 @@ namespace FishingHotspots
                 };
 
                 reader.Close();
-
-                del("load", itemToDeleteField, true);
             }
             catch
             {
+                // failed to get field from tabel --> output appropiate error msg.
                 del("load", itemToDeleteField, false);
             }
             finally
