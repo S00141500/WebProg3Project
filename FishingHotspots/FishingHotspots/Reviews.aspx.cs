@@ -45,10 +45,10 @@ namespace FishingHotspots
                         lblError.Text = "No Reviews match your search. Please try again";
                     }
 
-                        ListViewReviews.DataSource = queryResults;
+                    ListViewReviews.DataSource = queryResults;
                     ListViewReviews.DataBind();
 
-                    command.Connection.Close();
+ 
                 }
                 catch (Exception ex)
                 {
@@ -59,6 +59,7 @@ namespace FishingHotspots
                 {
                     conn.Close();
                 }
+                
             }
             //displays all reviews if no seesion state exists
             else

@@ -91,7 +91,8 @@
         </asp:ListView>
         <div class="col-lg-2 display">
             <asp:Button runat="server" ID="btnLike" CssClass="btn btn-success col-lg-1" Text="Like" OnClick="btnLike_Click" Visible="false" />
-            <asp:Label ID="lblRated" runat="server" Text="You liked this" CssClass="rated"  Visible="false"></asp:Label>
+            <asp:Label ID="lblRated" runat="server" Text="You liked this" CssClass="rated"  Visible="false"></asp:Label><br />
+            <asp:Label ID="lblHashed" runat="server" CssClass="rated"  Visible="false" style="width:40px"></asp:Label>
         </div>
     </div>
 
