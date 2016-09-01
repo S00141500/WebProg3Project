@@ -24,7 +24,6 @@ namespace FishingHotspots
         public delegate string MyStringDelegate(string str);
         public delegate void MyDelegate();
         public event MyDelegate MyEvent;
-        public event MyStringDelegate MyStringEvent;
         public static string HashValue;
         public Random rnd = new Random();
 
@@ -57,14 +56,10 @@ namespace FishingHotspots
                 btnLike.Visible = false;
                 lblRated.Visible = true;
 
-                Random rnd = new Random();
-                MyStringEvent += new MyStringDelegate(GetMd5Hash);
-
                 btnLike.Visible = false;
                 lblRated.Visible = true;
                 
-                lblHashed.Text = MyStringEvent("Ratings Code has been hashed " + Convert.ToString(rnd.Next(1000000, 9999999)));
-                lblHashed.Visible = true;
+                
             }
 
             command.Parameters.Clear();
@@ -112,22 +107,6 @@ namespace FishingHotspots
             MyEvent();
 
         }
-        static string GetMd5Hash(string str)
-        {
-            string hashThis = str;
-
-            using (MD5 md5Hash = MD5.Create())
-            {
-
-                byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(hashThis));
-
-                foreach (byte b in data)
-                {
-                    hashThis = hashThis + b.ToString("x2");
-                }
-            }
-            HashValue = hashThis;
-           return HashValue;
-        }
+        
     }
 }

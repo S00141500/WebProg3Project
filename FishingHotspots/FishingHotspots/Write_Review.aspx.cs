@@ -29,14 +29,8 @@ namespace FishingHotspots
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.Cookies["myAuthCookie"] != null)
-            {
-                string hashedusername = GetMd5Hash(HttpContext.Current.User.Identity.Name);
-                lblHashedUsrNme.Text = String.Format("The Username hashed: {0}", hashedusername);
-            }
-
-            else
-            {
+            if (Request.Cookies["myAuthCookie"] == null)
+            {        
                 Response.Redirect("Index.aspx");
             }
         }
@@ -256,21 +250,6 @@ namespace FishingHotspots
 
         }
 
-        static string GetMd5Hash(string input)
-        {
-            string output = "";
-
-            using (MD5 md5Hash = MD5.Create())
-            {
-
-                byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-
-                foreach (byte b in data)
-                {
-                    output = output + b.ToString("x2");
-                }
-            }
-            return output;
-        }
+       
     }
 }
