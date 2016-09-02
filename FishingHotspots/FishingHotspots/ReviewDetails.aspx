@@ -27,12 +27,12 @@
 
             <ItemTemplate>
                 <div class="row">
-                    <div class="col-lg-5">
+                    <div class="col-lg-4">
                         <h1><strong><%#:Eval("Title")%></strong></h1>
                         <br />
                         <asp:Image ID="reviewImage" runat="server" ImageUrl='<%#Eval("Photo") %>' class="img-responsive displayImg" alt="review" />
                     </div>
-                    <div class="col-lg-6 col-lg-offset-1 display">
+                    <div class="col-lg-5 col-lg-offset-1 display">
                         <strong>
                             <asp:Label runat="server">Date:</asp:Label></strong>
                         <asp:Label runat="server"><%#:Eval("ReviewDate","{0:MMM dd, yyyy}")%></asp:Label>
@@ -59,7 +59,8 @@
                         <asp:Label runat="server"> <%#:Eval("Likes")%> Likes</asp:Label>
                         <br />
                         <br />
-                        <strong><asp:Label runat="server">Fish Caught</asp:Label></strong>
+                        <strong>
+                            <asp:Label runat="server">Fish Caught</asp:Label></strong>
                         <asp:GridView ID="GridView1" runat="server" ShowHeader="false" DataSourceID="sqlDSFishCaught" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
                             <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
                             <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
@@ -76,7 +77,7 @@
                         <p>
                             <%#:Eval("ReviewText")%><p>
                                 <br />
-                        <br />
+                                <br />
                     </div>
                 </div>
             </ItemTemplate>
@@ -89,10 +90,8 @@
                 </div>
             </LayoutTemplate>
         </asp:ListView>
-        <div class="col-lg-2 display">
-            <asp:Button runat="server" ID="btnLike" CssClass="btn btn-success col-lg-1" Text="Like" OnClick="btnLike_Click" Visible="false" />
-            <asp:Label ID="lblRated" runat="server" Text="You liked this" CssClass="rated"  Visible="false"></asp:Label><br />
-            <asp:Label ID="lblHashed" runat="server" CssClass="rated"  Visible="false" style="width:40px"></asp:Label>
+        <div  class="col-md-1 like">
+            <asp:Button runat="server" ID="btnLike" CssClass="btn-xs btn-success col-lg-1" Text="Like" OnClick="btnLike_Click" Visible="false" />
         </div>
     </div>
 

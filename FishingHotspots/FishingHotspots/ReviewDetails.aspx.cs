@@ -35,6 +35,7 @@ namespace FishingHotspots
             }
             if (Request.Cookies["myAuthCookie"] != null)
             {
+                
                 btnLike.Visible = true;
             }
 
@@ -54,12 +55,6 @@ namespace FishingHotspots
             if (queryResults.Read())
             {
                 btnLike.Visible = false;
-                lblRated.Visible = true;
-
-                btnLike.Visible = false;
-                lblRated.Visible = true;
-                
-                
             }
 
             command.Parameters.Clear();

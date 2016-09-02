@@ -67,6 +67,15 @@ namespace FishingHotspots {
         protected global::System.Web.UI.WebControls.ListView ListView1;
         
         /// <summary>
+        /// selected control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl selected;
+        
+        /// <summary>
         /// lblError control.
         /// </summary>
         /// <remarks>
@@ -76,12 +85,39 @@ namespace FishingHotspots {
         protected global::System.Web.UI.WebControls.Label lblError;
         
         /// <summary>
-        /// ListViewReviews control.
+        /// reviewImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ListViewReviews;
+        protected global::System.Web.UI.WebControls.Image reviewImage;
+        
+        /// <summary>
+        /// lblTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTitle;
+        
+        /// <summary>
+        /// lblDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDate;
+        
+        /// <summary>
+        /// btnReviewDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReviewDetails;
     }
 }

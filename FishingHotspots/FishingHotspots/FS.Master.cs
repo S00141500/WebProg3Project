@@ -188,7 +188,7 @@ namespace FishingHotspots
         }
 
         // alerts fail message and shows number of attempts 
-        public void attemptsMade(int i)
+        private void attemptsMade(int i)
         {
             if (IsPostBack)
             {
@@ -202,7 +202,7 @@ namespace FishingHotspots
 
         }
         //shows error message with number of attempts remaining
-        public void attemptsLeft(int i)
+        private void attemptsLeft(int i)
         {
             if (3 - i <= 0)
             {

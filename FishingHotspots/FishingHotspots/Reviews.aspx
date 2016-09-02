@@ -35,7 +35,7 @@
                             </div>
                         </div>
 
-                        <asp:Button ID="btnFindNow" runat="server" Text="Find Now" class="btn btn-primary" OnClick="btnFindNow_Click"></asp:Button>
+                        <asp:Button ID="btnFindNow" runat="server"  Text="Find Now" class="btn btn-primary" OnClick="btnFindNow_Click"></asp:Button>
                     </div>
 
                     <asp:SqlDataSource ID="SqlDataSourceTopRated" runat="server" ConnectionString="<%$ ConnectionStrings:FishingHotspotsDB %>" SelectCommand="TopRated" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
@@ -67,10 +67,18 @@
                 </div>
 
 
-                <div class="col-lg-8 col-lg-offset-1 col-sm-8">
+                <div ID="selected" runat="server" class="col-lg-8 col-lg-offset-1 col-sm-8">
                     <asp:Label ID="lblError" runat="server" Text="" CssClass="alert-danger" Display="Dynamic"></asp:Label>
-                    <asp:ListView ID="ListViewReviews" runat="server">
-                        <ItemTemplate>
+                     <div class="col-lg-4 col-sm-6 reviews" runat="server" >
+                                <div id="ImageDiv">
+                                    <asp:Image ID="reviewImage" runat="server" ImageUrl='' class="img-responsive" alt="review" />
+                                </div>
+                                <h4><strong><asp:Label runat="server" ID="lblTitle"></asp:Label></strong></h4>
+                                <p class="price"><b>Date</b><asp:label runat="server" ID="lblDate"></asp:label></p>
+                            <asp:Button ID="btnReviewDetails" runat="server" class="btn btn-primary" OnClick="btnReviewDetails_OnClick" Text="View Details"></asp:Button>
+                            </div>
+              <%--      <asp:ListView ID="ListViewReviews" runat="server" DataKeyNames="Id"  >
+                            <ItemTemplate>
                             <div class="col-lg-4 col-sm-6 reviews" runat="server" >
                                 <div id="ImageDiv">
                                     <asp:Image ID="reviewImage" runat="server" ImageUrl='<%#Eval("Photo") %>' class="img-responsive" alt="review" />
@@ -88,7 +96,8 @@
                             </div>
                         </LayoutTemplate>
                     </asp:ListView>
-                    
+              --%>      
+
 
 
 
