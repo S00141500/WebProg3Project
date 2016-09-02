@@ -254,7 +254,7 @@ namespace FishingHotspots
 
                 reader.Close();
             }
-            catch
+            catch(Exception e)
             {
                 // failed to get field from tabel --> output appropiate error msg.
                 del("load", itemToDeleteField, false);

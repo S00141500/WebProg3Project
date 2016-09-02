@@ -21,10 +21,8 @@ namespace FishingHotspots
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             lblError.Visible = false;
-
-
+            
             ShowNewsList();
         }
 
@@ -53,10 +51,8 @@ namespace FishingHotspots
             }
             catch (Exception ex)
             {
-
                 lblError.Visible = true;
                 lblError.Text = ex.Message;
-
             }
 
             finally

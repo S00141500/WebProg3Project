@@ -67,7 +67,9 @@ namespace FishingHotspots
                     else
                     {
                         queryResults.Close();
-
+                        
+                        // BUG!!! without removing this param it will passed to the next sproc.
+                        command.Parameters.Clear();
                         //set the commandType to storedprocedure
                         command.CommandType = CommandType.StoredProcedure;
 
